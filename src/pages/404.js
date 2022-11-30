@@ -1,3 +1,4 @@
+import { useEffect } from 'react'
 import { graphql } from 'gatsby'
 
 const notFound404 = ({ location, data }) => {
