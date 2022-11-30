@@ -1,0 +1,88 @@
+.testimonials {
+    display: grid;
+    grid-template-columns: auto 700px;
+    gap: 10px;
+    background-color: #8FB2C6;
+    padding: 50px;
+    .left {
+        position: relative;
+        .button {
+            min-width: 140px;
+            text-align: center;
+        }
+        h2 {
+            font-size: 80px;
+            color: white;
+            margin: 0;
+        }
+        .countdown {
+            position: absolute;
+            left: 0px;
+            bottom: 0px;
+            max-width: calc(50vw - 50px);
+            .profile {
+                position: relative;
+                display: inline-block;
+                margin: 6px;
+                width: 89px;
+                height: 89px;
+                img {
+                    border-radius: 100%;
+                }
+                &.current:after {
+                    content: "";
+                    position: absolute;
+                    border-radius: 100%;
+                    left: -4px;
+                    top: -4px;
+                    width: calc(100% + 8px);
+                    height: calc(100% + 8px);
+                    outline: 2px solid rgba(255,255,255,0.5);
+
+                }
+            }
+        }
+    }
+    .right {
+        max-width: 710px;
+        .nav {
+            text-align: right;
+            padding: 30px 0 20px 0;
+            .arrow-left {
+                display: inline-block;
+                width: 50px;
+                height: 50px;
+                background-image: url("data:image/svg+xml,%3C%3Fxml version='1.0' encoding='utf-8'%3F%3E%3Csvg version='1.0' id='Layer_1' xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink' x='0px' y='0px' viewBox='0 0 90.4 90.4' style='enable-background:new 0 0 90.4 90.4;' xml:space='preserve'%3E%3Cstyle type='text/css'%3E .st0%7Bfill:%23FFFFFF;%7D .st1%7Bfill:none;stroke:%23769CB1;stroke-width:2;stroke-linecap:round;stroke-miterlimit:10;%7D%0A%3C/style%3E%3Ccircle class='st0' cx='45.2' cy='45.2' r='44.1'/%3E%3Cpolyline class='st1' points='50.2,60.9 34.8,45.5 50.7,29.5 '/%3E%3C/svg%3E%0A");
+            }
+            .arrow-right {
+                margin-left: 10px;
+                display: inline-block;
+                width: 50px;
+                height: 50px;
+                background-image: url("data:image/svg+xml,%3C%3Fxml version='1.0' encoding='utf-8'%3F%3E%3Csvg version='1.0' id='Layer_1' xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink' x='0px' y='0px' viewBox='0 0 90.4 90.4' style='enable-background:new 0 0 90.4 90.4;' xml:space='preserve'%3E%3Cstyle type='text/css'%3E .st0%7Bfill:%23FFFFFF;%7D .st1%7Bfill:none;stroke:%23769CB1;stroke-width:2;stroke-linecap:round;stroke-miterlimit:10;%7D%0A%3C/style%3E%3Ccircle class='st0' cx='45.2' cy='45.2' r='44.1'/%3E%3Cpolyline class='st1' points='40.2,60.9 55.7,45.5 39.7,29.5 '/%3E%3C/svg%3E%0A");
+            }
+        }
+        .card {
+            background-color: white;
+            border-radius: 16px;
+            padding: 30px;
+            box-sizing: border-box;
+            .header {
+                .author {
+                    font-size: 20px;
+                    font-weight: 500;
+                    display: block;
+                }
+                .position {
+                    font-size: 20px;
+                    color: #8FB2C6;
+                }
+            }
+            .text {
+                margin-top: 120px;
+                font-size: 32px;
+            }
+        }
+
+    }
+}

@@ -1,0 +1,100 @@
+footer {
+    margin-top: 100px;
+    .container {
+    color: white;
+    background-color: #1C1C1C;
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
+    }
+    .top {
+        position: relative;
+        padding: 40px;
+        .logo {
+            max-width: 160px;
+            margin-bottom: 80px;
+        }
+        .logos {
+            position: absolute;
+            right: 40px;
+            top: 40px;
+            .icon {
+                line-height: 0;
+                padding: 12px;
+                border-radius: 100%;
+                border: 1px solid white;
+                display: inline-block;
+                margin-left: 5px;
+                color: white;
+            }
+        }
+        .menu {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+            ul {
+                list-style: none;
+                padding-left: 0;
+                li {
+                    a {
+                        color: white;
+                        font-size: 72px;
+                        font-weight: 400;
+                        &.button.white.with-arrow {
+                            font-size: 16px;
+                            color: #181818;
+                            &:after {
+                                filter: invert(.7)
+                            }
+                        }
+                    }
+                    .form {
+                        display: grid;
+                        grid-template-columns: minmax(min-content, 400px) auto;
+                        gap: 20px;
+                        align-items: center;
+                        margin-top: 20px;
+                        input {
+                            padding: 17px;
+                            background-color: transparent;
+                            border: 1px solid white;
+                            border-radius: 5px;
+                            width: 100%;
+                            max-width: 400px;
+                        }
+                        a {
+                            display: inline;
+                        }
+                    }
+                }
+            }
+        }
+    }
+    .line {
+        height: 1px;
+        width: 100%;
+        background-color: white;
+        opacity: 0.2;
+    }
+    .bottom {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 20px;
+        padding: 15px 40px;
+        .left {
+            color: white;
+            opacity: 0.5;
+        }
+        .center {
+            a {
+                color: white;
+                opacity: 0.5;
+            }
+        }
+        .right {
+            a {
+                color: white;
+                opacity: 0.5;
+            }            
+        }
+    }
+}

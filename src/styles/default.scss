@@ -1,0 +1,75 @@
+@import 'fonts';
+
+html, body {
+    padding: 0;
+    margin: 0;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+html, body, h1, h2, h3, h4, h5, h6, p, div, input, textarea {
+    font-family: 'TT Firs Neue';
+}
+
+a {
+    color: #00E2FB;
+    text-decoration: none;
+}
+
+p {
+    font-size: 20px;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-weight: 400;
+}
+
+section {
+    margin-top: 120px;
+    margin-bottom: 30px;
+}
+
+.container {
+    max-width: 1440px;
+    margin: 0 auto;
+}
+
+.nowrap {
+    white-space: nowrap;
+}
+
+.button {
+    background-color: #8FB2C6;
+    display: inline-block;
+    padding: 16px 24px;
+    border-radius: 70px;
+    color: #FFFFFF;
+    font-size: 16px;
+    line-height: 22px;
+    letter-spacing: 0.02em;
+    cursor: pointer;
+    position: relative;
+    text-decoration: none;
+    &.with-arrow {
+        padding-right: 60px;
+        &:after {
+            position: absolute;
+            right: 18px;
+            top: 50%;
+            transform: translateY(-50%);
+            content: "";
+            width: 24px;
+            height: 18px;
+            background-image: url("data:image/svg+xml,%3C%3Fxml version='1.0' encoding='utf-8'%3F%3E%3Csvg version='1.0' id='Layer_1' xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink' x='0px' y='0px' viewBox='0 0 120 90' style='enable-background:new 0 0 120 90;' xml:space='preserve'%3E%3Cstyle type='text/css'%3E .st0%7Bfill:none;stroke:%23FFFFFF;stroke-width:6;stroke-linecap:round;stroke-miterlimit:10;%7D%0A%3C/style%3E%3Cpolyline class='st0' points='76.5,9.1 110.3,43.7 76.5,78.4 '/%3E%3Cline class='st0' x1='8.1' y1='43.7' x2='110.3' y2='43.7'/%3E%3C/svg%3E%0A");
+        }
+    }
+    &.white {
+        background-color: white;
+        color: #181818;
+        &.lite {
+            border: 2px solid white;
+            background-color: transparent;
+            color: white;
+        }
+    }
+}

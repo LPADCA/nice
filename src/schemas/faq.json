@@ -1,0 +1,54 @@
+{
+  "Main": {
+    "title": {
+      "type": "StructuredText",
+      "config": {
+        "single": "heading2",
+        "label": "Title"
+      }
+    },
+    "questions": {
+      "type": "Group",
+      "config": {
+        "fields": {
+          "question": {
+            "type": "Text",
+            "config": {
+              "label": "Question"
+            }
+          },
+          "answer": {
+            "type": "StructuredText",
+            "config": {
+              "multi": "paragraph,preformatted,heading1,heading2,heading3,heading4,heading5,heading6,strong,em,hyperlink,image,embed,list-item,o-list-item,rtl",
+              "label": "Answer"
+            }
+          }
+        },
+        "label": "Questions"
+      }
+    }
+  },
+  "Contact CTA": {
+    "header": {
+      "type": "StructuredText",
+      "config": {
+        "single": "heading6",
+        "label": "Header"
+      }
+    },
+    "text": {
+      "type": "StructuredText",
+      "config": {
+        "multi": "paragraph,preformatted,heading1,heading2,heading3,heading4,heading5,heading6,strong,em,hyperlink,image,embed,list-item,o-list-item,rtl",
+        "label": "Text"
+      }
+    },
+    "button_text": {
+      "type": "Text",
+      "config": {
+        "label": "Button text"
+      }
+    }
+  }
+}
