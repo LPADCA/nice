@@ -4,26 +4,15 @@ require("dotenv").config({
 const linkResolver = require("./src/utils/linkResolver")
 module.exports = {
     siteMetadata: {
-        siteUrl: process.env.SITE_URL || "https://sonderly.io/",
-        title: "Sonderly",
+        siteUrl: process.env.SITE_URL || "https://nicerecovery.com/",
+        title: "NICE Recovery",
         description:
-            "An educational and training platform for professionals and educators seeking to learn more about autism and mental health.",
+            "Nice ",
     },
     plugins: [
-        "gatsby-plugin-image",
-        "gatsby-transformer-sharp",
         "gatsby-plugin-sitemap",
         "gatsby-plugin-robots-txt",
         "gatsby-plugin-react-helmet",
-        {
-            resolve: "gatsby-plugin-sharp",
-            options: {
-                defaults: {
-                    quality: 100,
-                    backgroundColor: "transparent",
-                },
-            },
-        },
         "gatsby-plugin-sass",
         {
             resolve: `gatsby-source-prismic`,
@@ -59,7 +48,7 @@ module.exports = {
             options: {
                 pixelId: process.env.FACEBOOK_PIXEL_ID,
             },
-        },*/
+        },
         {
             resolve: "gatsby-plugin-svgr",
             options: {
@@ -68,7 +57,7 @@ module.exports = {
                     removeViewBox: false,
                 },
             },
-        },
+        },*/
         {
             resolve: "gatsby-plugin-manifest",
             options: {

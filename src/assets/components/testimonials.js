@@ -1,4 +1,4 @@
-import { Component, createRef } from 'react'
+import React, { Component, createRef } from 'react'
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Autoplay, Navigation, Thumbs, A11y } from 'swiper';
 import { CircularProgressbarWithChildren, buildStyles } from 'react-circular-progressbar';

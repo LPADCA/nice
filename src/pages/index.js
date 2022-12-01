@@ -2,6 +2,7 @@ import React from "react"
 import { graphql } from "gatsby"
 import Layout from '../assets/components/layout'
 import Faq from "../assets/components/faq"
+import HowItWorks from "../assets/components/howitworks"
 import Testimonials from "../assets/components/testimonials"
 import "@styles/index.scss"
 
@@ -53,30 +54,8 @@ const Homepage = ({ data, location }) => {
                         </div>
                     </div>
                 </section>
-                <section>
-                    <div className="container">
-                        <div className="how-it-works">
-                            <h2>How it works</h2>
-                            <div className="cards">
-                                <div className="card">
-                                    <div className="content">
-                                        <h3>Step #1</h3>
-                                        <p>Delivers precise cold therapy without ice – along with programmable and customizable pneumatic compression – in the smallest.</p>
-                                    </div>
-                                    <div className="image">
-                                        <img src="/tmp-content/how-it-works-frame-1.png"/>
-                                    </div>
-                                </div>
-                            </div>
-                            <div className="dots">
-                                <div className="dot"><span>01</span><span className="line"></span></div>
-                                <div className="dot"><span>02</span><span className="line"></span></div>
-                                <div className="dot"><span>03</span><span className="line"></span></div>
-                                <div className="dot"><span>04</span><span className="line"></span></div>
-                            </div>
-                        </div>
-                    </div>
-                </section>
+
+                <HowItWorks/>
 
                 <section className="illustration1">
                     <div className="grid container">

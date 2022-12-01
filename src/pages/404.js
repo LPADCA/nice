@@ -1,15 +1,9 @@
-import { useEffect } from 'react'
+import React from "react"
 import { graphql } from 'gatsby'
 
 const notFound404 = ({ location, data }) => {
-    useEffect(() => {
-        if (document.referrer.indexOf(process.env.GATSBY_LOCALE_LINK) !== -1) {
-            navigate("/", { replace: true })
-        }
-    }, [])
-
     return (
-        <></>
+        <div>_</div>
     )
 }
 

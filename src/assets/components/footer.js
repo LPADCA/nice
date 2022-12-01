@@ -1,3 +1,4 @@
+import React from 'react'
 import {FiInstagram, FiFacebook} from 'react-icons/fi'
 import {RiVimeoLine} from 'react-icons/ri' 
 import "@styles/footer.scss"

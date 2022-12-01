@@ -1,5 +1,5 @@
-import {useState, React} from "react"
-import { StaticQuery, graphql } from "gatsby"
+import React, {useState} from "react"
+import {StaticQuery, graphql} from "gatsby"
 import AnimateHeight from 'react-animate-height';
 import "@styles/faq.scss"
 

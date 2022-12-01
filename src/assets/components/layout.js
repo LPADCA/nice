@@ -1,3 +1,4 @@
+import React from "react"
 import PropTypes from "prop-types"
 import { Helmet } from "react-helmet"
 import { useStaticQuery, graphql } from "gatsby"
@@ -35,7 +36,7 @@ const Layout = ({ location, children, seo_title, seo_description, seo_keywords, 
                 <title>{title}</title>
                 <meta name="description" content={description} />
                 <meta name="keywords" content={keywords} />
-                <meta property="og:image" content="https://sonderly.io/images/og.jpg" />
+                <meta property="og:image" content="" />
                 <meta property="og:title" content={title} />
                 <meta property="og:description" content={description} />
                 <meta property="og:locale" content={process.env.GATSBY_LOCALE} />
