@@ -24,6 +24,7 @@ module.exports = {
                 lang: process.env.GATSBY_LOCALE ? process.env.GATSBY_LOCALE : "en-us",
                 schemas: {
                     homepage: require("./src/schemas/homepage.json"),
+                    testimonials: require("./src/schemas/testimonials.json"),
                     faq: require("./src/schemas/faq.json"),
                     404: require("./src/schemas/404.json"),
                     // Your custom types mapped to schemas
