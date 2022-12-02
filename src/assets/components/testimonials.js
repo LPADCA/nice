@@ -61,6 +61,9 @@ class Testimonials extends Component {
 
     slideChanged = () => {var ax = this.swipermain.current.swiper.realIndex; this.setState({current: ax, indices: this.setArray(6, ax)});}
 
+    /*   <a href="" className="button white">patient</a> <a href="" className="button white lite">surgeon</a> <a href="" className="button white lite">phys therapist</a> */
+
+
     render() {
         return (
             <section className="testimonials">
@@ -75,7 +78,6 @@ class Testimonials extends Component {
                             style={{ textDecoration: 'underline', fontStyle: 'italic' }}
                             />
                             <br/>think about Nice</h2>
-                    <a href="" className="button white">patient</a> <a href="" className="button white lite">surgeon</a> <a href="" className="button white lite">phys therapist</a>
                     <div className="countdown">
                         {this.state.indices.map((value, index) => (
                             <div key={index} className="profile" onClick={this.switchSlide.bind(this, (index + 1))}>
