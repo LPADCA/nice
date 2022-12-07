@@ -23,6 +23,8 @@ module.exports = {
                 linkResolver: () => (doc) => linkResolver(doc),
                 lang: process.env.GATSBY_LOCALE ? process.env.GATSBY_LOCALE : "en-us",
                 schemas: {
+                    products: require("./src/schemas/products.json"),
+                    information_page: require("./src/schemas/other.json"),
                     homepage: require("./src/schemas/homepage.json"),
                     testimonials: require("./src/schemas/testimonials.json"),
                     faq: require("./src/schemas/faq.json"),

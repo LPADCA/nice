@@ -24,18 +24,18 @@ const wrapper = (promise) =>
 
 exports.createPages = async ({ graphql, actions }) => {
     const { createPage } = actions
-/*
-    const customPagesResult = await wrapper(
+    const generatePages = await wrapper(
         graphql(`
+
             {
-                allPrismicPage {
+                allPrismicProducts {
                     edges {
                         node {
                             uid
                         }
                     }
                 }
-                allPrismicBlogPost {
+                allPrismicInformationPage {
                     edges {
                         node {
                             uid
@@ -45,5 +45,27 @@ exports.createPages = async ({ graphql, actions }) => {
             }
         `)
     )
-*/
+
+    generatePages.data.allPrismicProducts.edges.forEach((edge) => {
+        createPage({
+            type: "products",
+            path: `/${edge.node.uid}`,
+            component: path.resolve("src/templates/products.js"),
+            context: {
+                uid: `${edge.node.uid}`,
+            },
+        })
+    })
+
+    generatePages.data.allPrismicInformationPage.edges.forEach((edge) => {
+        createPage({
+            type: "information_page",
+            path: `/${edge.node.uid}`,
+            component: path.resolve("src/templates/other.js"),
+            context: {
+                uid: `${edge.node.uid}`,
+            },
+        })
+    })
+
 }

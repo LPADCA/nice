@@ -8,7 +8,7 @@ const Footer = () => {
         <footer>
         <div className="container">
             <div className="top">
-                <img className="logo" src="/tmp-content/nice-logo.svg" alt="Nice logo"/>
+                <img className="logo" src="/images/nice-logo-white.svg" alt="Nice logo"/>
                 <div className="logos">
                     <a target="_blank" href="https://www.instagram.com/nicerecovery/"><div className="icon"><FiInstagram size="1.2em"/></div></a>
                     <a target="_blank" href="https://www.facebook.com/NiceRecovery/"><div className="icon"><FiFacebook size="1.2em"/></div></a>
@@ -48,10 +48,10 @@ const Footer = () => {
                     All rights reserved. MADE IN USA / BOULDER, CO 
                 </div>
                 <div className="center">
-                    <a href="#">Privacy policy</a>
+                    <a href="/privacy-policy">Privacy policy</a>
                 </div>
                 <div className="right">
-                    <a href="#">Cookies</a>
+                    <a href="/terms-of-use">Terms of Use</a>
                 </div>
             </div>
         </div>

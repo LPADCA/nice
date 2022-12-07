@@ -9,11 +9,15 @@ html, body {
 
 html, body, h1, h2, h3, h4, h5, h6, p, div, input, textarea {
     font-family: 'TT Firs Neue';
+    color: #181818;
 }
 
 a {
     color: #00E2FB;
     text-decoration: none;
+    &.dark {
+        color: #181818;
+    }
 }
 
 p {
@@ -24,6 +28,13 @@ h1, h2, h3, h4, h5, h6 {
     font-weight: 400;
 }
 
+h1 {font-size: 48px;}
+h2 {font-size: 36px;}
+h3 {font-size: 32px;}
+h4 {font-size: 28px;}
+h5 {font-size: 24px;}
+h6 {font-size: 22px;}
+
 section {
     margin-top: 120px;
     margin-bottom: 30px;
@@ -32,6 +43,16 @@ section {
 .container {
     max-width: 1440px;
     margin: 0 auto;
+    padding: 0 20px;
+}
+
+.container-small {
+    max-width: 720px;
+    margin: 0 auto;
+}
+
+.centered {
+    text-align: center;
 }
 
 .nowrap {
@@ -70,5 +91,11 @@ section {
             background-color: transparent;
             color: white;
         }
+    }
+}
+
+main {
+    &>div:first-child, &>section:first-child {
+        margin-top: 150px;
     }
 }

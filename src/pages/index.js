@@ -4,14 +4,17 @@ import Layout from '../assets/components/layout'
 import Faq from "../assets/components/faq"
 import HowItWorks from "../assets/components/howitworks"
 import Testimonials from "../assets/components/testimonials"
+import { Element } from 'react-scroll'
+
 import "@styles/index.scss"
 
 const Homepage = ({ data, location }) => {
     return (
-        <Layout>
+        <Layout location={location}>
                 <section>
                     <div className="container" style={{textAlign: 'center'}}>[ANIMATION]</div>
                 </section>
+                <Element name="products"/>
                 <section>
                     <div className="container">
                         <div className="products">
@@ -55,6 +58,7 @@ const Homepage = ({ data, location }) => {
                     </div>
                 </section>
 
+                <Element name="howitworks"/>
                 <HowItWorks/>
 
                 <section className="illustration1">
@@ -83,6 +87,7 @@ const Homepage = ({ data, location }) => {
                 </section>
 
                 <Faq/>
+                <Element name="testimonials"/>
                 <Testimonials/>
 
                 <section className="illustration2">
@@ -106,6 +111,7 @@ const Homepage = ({ data, location }) => {
                         </div>
                     </div>
                 </section>
+                <Element name="contactus"/>
                 <section className="contact">
                     <div className="container">
                         <div className="grid">
