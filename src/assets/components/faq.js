@@ -1,5 +1,5 @@
 import React, {useState} from "react"
-import {StaticQuery, graphql} from "gatsby"
+import {StaticQuery, graphql, Link} from "gatsby"
 import AnimateHeight from 'react-animate-height';
 import "@styles/faq.scss"
 
@@ -58,7 +58,7 @@ return (
                             <div className="card">
                                 <h4>{data.prismicFaq.data.header.text}</h4>
                                 <div dangerouslySetInnerHTML={{__html:data.prismicFaq.data.text.html}}/>
-                                <a href="" className="button with-arrow white lite">{data.prismicFaq.data.button_text}</a>
+                                <Link to="" className="button with-arrow white lite">{data.prismicFaq.data.button_text}</Link>
                             </div>
                         </div>
                         <div className="right">

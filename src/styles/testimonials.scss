@@ -1,50 +1,65 @@
 .testimonials {
-    display: grid;
-    grid-template-columns: auto 700px;
-    gap: 10px;
     background-color: #8FB2C6;
     padding: 50px;
-    .left {
-        position: relative;
-        .button {
-            min-width: 140px;
-            text-align: center;
-        }
-        h2 {
-            font-size: 80px;
-            color: white;
-            margin: 0;
-        }
-        .countdown {
-            position: absolute;
-            left: 0px;
-            bottom: 0px;
-            max-width: calc(50vw - 50px);
-            .profile {
-                position: relative;
-                display: inline-block;
-                margin: 6px;
-                width: 89px;
-                height: 89px;
-                img {
-                    border-radius: 100%;
+    .grid {
+        display: grid;
+        grid-template-columns: auto 600px;
+        gap: 30px;
+        .left {
+            position: relative;
+            .button {
+                min-width: 140px;
+                text-align: center;
+            }
+            h2 {
+                font-size: 72px;
+                color: white;
+                margin: 0;
+                span {
+                    font-style: italic;
+                    text-decoration: underline;
                 }
-                &.current:after {
-                    content: "";
-                    position: absolute;
-                    border-radius: 100%;
-                    left: -4px;
-                    top: -4px;
-                    width: calc(100% + 8px);
-                    height: calc(100% + 8px);
-                    outline: 2px solid rgba(255,255,255,0.5);
+            }
+            .countdown {
+                position: absolute;
+                left: 0px;
+                bottom: 0px;
+                max-width: calc(50vw - 50px);
+                .profile {
+                    position: relative;
+                    display: inline-block;
+                    margin: 6px;
+                    width: 89px;
+                    height: 89px;
+                    pointer-events: none;
+                    img {
+                        border-radius: 100%;
+                        width: 75px;
+                        filter: grayscale(1);
+                        transition: 0.5s filter ease-out;
+                        &.active {
+                            filter: grayscale(0);
+                        }
+                    }
+                    &.current:after {
+                        content: "";
+                        position: absolute;
+                        border-radius: 100%;
+                        left: -4px;
+                        top: -4px;
+                        width: calc(100% + 8px);
+                        height: calc(100% + 8px);
+                        outline: 2px solid rgba(255,255,255,0.5);
 
+                    }
                 }
             }
         }
     }
     .right {
-        max-width: 710px;
+        .swiper-slide {
+            height: auto;
+        }
         .nav {
             text-align: right;
             padding: 30px 0 20px 0;
@@ -67,7 +82,8 @@
             border-radius: 16px;
             padding: 30px;
             box-sizing: border-box;
-            .header {
+            height: 100%;
+            .card_header {
                 .author {
                     font-size: 20px;
                     font-weight: 500;
@@ -79,10 +95,61 @@
                 }
             }
             .text {
-                margin-top: 120px;
-                font-size: 32px;
+                margin-top: 80px;
+                p {
+                    font-size: 26px;
+                }
             }
         }
 
+    }
+}
+
+@media screen and (max-width: 1200px) {
+    .testimonials {
+        .grid {
+            .left {
+                h2 {
+                    font-size: 54px;
+                }
+            }
+        }
+    }
+}
+
+
+@media screen and (max-width: 768px) {
+    .testimonials {
+        padding: 15px 0;
+        .grid {
+            display: block;
+            .left {
+                h2 {
+                    font-size: 40px;
+                    margin: 24px 0 32px 0;
+                }
+                .countdown {
+                    position: relative;
+                    max-width: none;
+                    //white-space: nowrap;
+                    //cursor: grab;
+                    //overflow: auto;
+                    .profile {
+                        width: 76px;
+                        height: 76px;
+                        img {
+                            width: 64px;
+                            height: 64px;
+                        }
+                    }
+                }
+            }
+            .right {
+                margin-top: 20px;
+                .nav {
+                    display: none;
+                }
+            }
+        }
     }
 }

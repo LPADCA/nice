@@ -1,7 +1,4 @@
 .faq {
-    h2 {
-        font-size: 80px;
-    }
     .grid {
         display: grid;
         grid-template-columns: 380px auto;
@@ -15,7 +12,7 @@
                     font-size: 36px;
                     font-weight: 400;
                     line-height: 38px;
-                    margin: 15px 0;
+                    margin: 0 0 15px 0;
                 }
                 p {
                     font-size: 20px;
@@ -33,7 +30,7 @@
                     }
                     .question {
                         margin: 0;
-                        font-size: 32px;
+                        font-size: 24px;
                         padding-right: 30px;
                         position: relative;
                         transition: color 0.5s ease-out;
@@ -78,5 +75,31 @@
     .more {
         margin-top: 20px;
         text-align: right;
+    }
+}
+
+
+@media screen and (max-width: 768px) {
+    .faq {
+        .grid {
+            grid-template-columns: 1fr;
+            .right {
+                .content {
+                    .element {
+                        padding: 15px 20px;
+                        .question {
+                            &:before {
+                                right: -5px;
+                                top: 15px;
+                            }
+                            &:after {
+                                right: -5px;
+                                top: 15px;
+                            }
+                        }
+                    }
+                }
+            }
+        }
     }
 }

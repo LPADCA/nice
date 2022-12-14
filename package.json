@@ -33,10 +33,10 @@
         "react-helmet": "^6.1.0",
         "react-icons": "^4.2.0",
         "react-scroll": "^1.8.8",
-        "react-type-animation": "^2.1.2",
         "react-visibility-sensor": "^5.1.1",
         "sass": "^1.32.7",
-        "swiper": "^8.4.5"
+        "swiper": "^8.4.5",
+        "typeit-react": "^2.6.0"
     },
     "devDependencies": {
         "dotenv": "^8.2.0"

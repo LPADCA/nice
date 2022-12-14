@@ -2,13 +2,16 @@ import React from 'react'
 import {FiInstagram, FiFacebook} from 'react-icons/fi'
 import {RiVimeoLine} from 'react-icons/ri' 
 import "@styles/footer.scss"
+import { Link } from 'gatsby'
 
 const Footer = () => {
     return (
         <footer>
         <div className="container">
             <div className="top">
-                <img className="logo" src="/images/nice-logo-white.svg" alt="Nice logo"/>
+                <Link to="/">
+                    <img className="logo" src="/images/nice-logo-white.svg" alt="Nice logo"/>
+                </Link>
                 <div className="logos">
                     <a target="_blank" href="https://www.instagram.com/nicerecovery/"><div className="icon"><FiInstagram size="1.2em"/></div></a>
                     <a target="_blank" href="https://www.facebook.com/NiceRecovery/"><div className="icon"><FiFacebook size="1.2em"/></div></a>
@@ -17,15 +20,13 @@ const Footer = () => {
                 <div className="menu">
                     <div className="left">
                         <ul>
-                            <li><a href="#">Home</a></li>
-                            <li><a href="#">Products</a></li>
-                            <li><a href="#">Instructions</a></li>
+                            <li><Link to="/nice1">Nice1</Link></li>
+                            <li><Link to="/howto">HowTo's</Link></li>
                         </ul>
                     </div>
                     <div className="right">
                         <ul>
-                            <li><a href="#">About us</a></li>
-                            <li><a href="#">Contact us</a></li>
+                            <li><Link to="/contact">Contact us</Link></li>
                             <li>
                                 <form>
                                     <div className="form">
@@ -33,7 +34,7 @@ const Footer = () => {
                                             <input type="email" placeholder="Email"/>
                                         </div>
                                         <div className="r">
-                                            <a href="#" className="button white with-arrow">Subscribe</a>
+                                            <a href="#" className="button white with-arrow just-arrow"></a>
                                         </div>
                                     </div>
                                 </form>
@@ -48,10 +49,10 @@ const Footer = () => {
                     All rights reserved. MADE IN USA / BOULDER, CO 
                 </div>
                 <div className="center">
-                    <a href="/privacy-policy">Privacy policy</a>
+                    <Link to="/privacy-policy">Privacy policy</Link>
                 </div>
                 <div className="right">
-                    <a href="/terms-of-use">Terms of Use</a>
+                    <Link to="/terms-of-use">Terms of Use</Link>
                 </div>
             </div>
         </div>
