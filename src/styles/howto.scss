@@ -1,0 +1,139 @@
+.quickstart {
+    .grid {
+        grid-template-columns: 1fr 1fr;
+        gap: 20px;
+        display: grid;
+        align-items: center;
+        img {
+            display: block;
+            width: 100%;
+            height: auto;
+            object-fit: cover;
+        }
+        strong {
+            text-transform: uppercase;
+        }
+        h5 {
+            font-weight: 700;
+            font-size: 24px;
+            text-transform: uppercase;
+            margin: 0;
+        }
+        p {
+            margin: 5px 0 0 0 ;
+        }
+    }
+}
+
+@media screen and (max-width: 500px) {
+    .quickstart {
+        .grid {
+            grid-template-columns: 1fr;
+        } 
+    }
+}
+
+.videos {
+    .grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 30px;
+        &>div:first-child {
+            grid-column: 1 / span 2;
+        }
+        .player-wrapper {
+            position: relative;
+            padding-top: 56.25% /* Player ratio: 100 / (1280 / 720) */
+        }
+        .react-player {
+            position: absolute;
+            top: 0;
+            left: 0;
+        }
+    }
+}
+
+@media screen and (max-width: 500px) {
+    .videos {
+        .grid {
+            grid-template-columns: 1fr;
+            &>div:first-child {
+                grid-column: 1 / span 1;
+            }
+        } 
+    }
+}
+
+
+.instructions {
+    .element {
+        padding: 20px 30px;
+        border: 1px solid #E3ECEF;
+        p {
+            margin: 10px 0;
+            font-size: 20px;
+        }
+        .question {
+            margin: 0;
+            font-size: 24px;
+            padding-right: 30px;
+            position: relative;
+            transition: color 0.5s ease-out;
+            &:before {
+                position: absolute;
+                right: 0;
+                top: 20px;
+                content: "";
+                width: 25px;
+                height: 1px;
+                background-color: black;
+            }
+            &:after {
+                position: absolute;
+                right: 0;
+                top: 20px;
+                content: "";
+                width: 25px;
+                height: 1px;
+                background-color: black;
+                transition: transform 0.5s ease-out, background-color 0.5s ease-out;
+                transform: rotate(90deg);
+                transform-origin: 50%;
+            }
+        }
+        &.open {
+            .question {
+                color: #769CB1;
+                &:before {
+                    background-color: #769CB1;
+                }
+                &:after {
+                    background-color: #769CB1;
+                    transform: rotate(0deg);
+                }
+            }
+        }
+        .answer {
+            padding: 10px 0;
+        }
+    }
+}
+
+
+@media screen and (max-width: 768px) {
+    .instructions {
+        .element {
+            padding: 15px 20px;
+            .question {
+                &:before {
+                    right: -5px;
+                    top: 15px;
+                }
+                &:after {
+                    right: -5px;
+                    top: 15px;
+                }
+            }
+        }
+    }
+}

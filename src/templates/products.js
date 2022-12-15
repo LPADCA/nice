@@ -7,9 +7,9 @@ const productPage = ({ data, location }) => {
     return (
         <Layout>
             <div className="product-page">
-                <div className="container">
+                <div className="container-small">
                     <h1 className="centered">{data.prismicProducts.data.title.text}</h1>
-                    <div className="container-small" dangerouslySetInnerHTML={{__html: data.prismicProducts.data.contents.html}} />
+                    <div dangerouslySetInnerHTML={{__html: data.prismicProducts.data.contents.html}} />
                 </div>
             </div>
         </Layout>

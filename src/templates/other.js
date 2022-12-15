@@ -7,9 +7,9 @@ const infoPage = ({ data, location }) => {
     return (
         <Layout>
             <div className="info-page">
-                <div className="container">
+                <div className="container-small">
                     <h1 className="centered">{data.prismicInformationPage.data.title.text}</h1>
-                    <div className="container-small" dangerouslySetInnerHTML={{__html: data.prismicInformationPage.data.content.html}} />
+                    <div dangerouslySetInnerHTML={{__html: data.prismicInformationPage.data.content.html}} />
                 </div>
             </div>
         </Layout>
