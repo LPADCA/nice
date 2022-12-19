@@ -68,7 +68,7 @@ class Header extends Component {
 
     render() {
         return (
-        <div className="header">
+        <div id="header" className="header">
             <div className="container">
                 <div className="grid">
                     <div className="logo-wrapper">

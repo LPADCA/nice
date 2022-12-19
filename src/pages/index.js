@@ -5,16 +5,16 @@ import Faq from "../assets/components/faq"
 //import HowItWorks from "../assets/components/howitworks"
 import Testimonials from "../assets/components/testimonials"
 import { Element } from 'react-scroll'
-
+import Animation from "../assets/components/animation"
 import "@styles/index.scss"
+
 
 const Homepage = ({ data, location }) => {
     return (
         <Layout location={location}>
-                <section>
-                    <div className="container" style={{textAlign: 'center'}}>[ANIMATION]</div>
-                </section>
+                <Animation/>
                 <Element name="products"/>
+                <div className="content-wrapper">
                 <section>
                     <div className="container">
                         <div className="products">
@@ -113,6 +113,7 @@ const Homepage = ({ data, location }) => {
                         </div>
                     </div>
                 </section>
+                </div>
         </Layout>
     )
 }

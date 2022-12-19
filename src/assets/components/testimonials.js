@@ -72,7 +72,6 @@ class Testimonials extends Component {
         var len2del = this.typeStrings[this.state.current].length;
         this.setState({current: newVal}); 
         if (this.typeInstance !== null) {
-            console.log(len2del);
             this.typeInstance.delete(len2del).type(this.typeStrings[this.state.current]).flush();
         }
     }

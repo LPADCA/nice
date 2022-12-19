@@ -123,6 +123,22 @@ section {
     }
 }
 
+.discover {
+    background-color: white;
+    color: #181818;
+    padding: 20px 20px 20px 40px;
+    border-radius: 100px;
+    &:after {
+        content: "";
+        vertical-align: -18px;
+        display: inline-block;
+        margin-left: 0px;
+        width: 50px;
+        height: 50px;
+        background-image: url("data:image/svg+xml,%3C%3Fxml version='1.0' encoding='utf-8'%3F%3E%3Csvg version='1.0' id='Layer_1' xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink' x='0px' y='0px' viewBox='0 0 90.4 90.4' style='enable-background:new 0 0 90.4 90.4;' xml:space='preserve'%3E%3Cstyle type='text/css'%3E .st0%7Bfill:%23FFFFFF;%7D%0A%3C/style%3E%3Ccircle class='st0' cx='45.2' cy='45.2' r='45.2'/%3E%3Cpolygon points='22.9,23.1 22.9,27.1 59.2,27.1 22.5,63.8 25.3,66.6 62,29.9 62,67.6 66,67.6 66,23.1 '/%3E%3C/svg%3E%0A");
+    } 
+}
+
 main {
     &>div:first-child, &>section:first-child {
         margin-top: 150px;

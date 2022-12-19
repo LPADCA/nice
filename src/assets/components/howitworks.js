@@ -50,7 +50,6 @@ class HowItWorks extends Component {
 
     componentDidMount() {
         this.setState({play: this.calcSlides(0)})
-        console.log('start');
     }
 
     calcSlides = (index) => {

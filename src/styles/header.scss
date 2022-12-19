@@ -107,6 +107,35 @@
     }
 }
 
+.header.inverted {
+    .grid {
+        .logo-wrapper {
+            .logo {
+                width: 100%;
+                max-width: 360px;
+                filter: invert(1);
+            }
+        }
+        .local-menu-wrapper {
+            ul {
+                li {
+                    a {
+                        color: white;
+                    }
+                }
+            }
+        }
+        .hamburger-wrapper {
+            .hamburger-react {
+                div {
+                    background-color: white !important;
+                }
+            }
+        }
+    }
+}
+
+
 
 @media screen and (max-width: 768px) {
     .header {

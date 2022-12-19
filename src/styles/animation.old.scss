@@ -1,0 +1,96 @@
+.box {
+    width: 700px;
+    height: 700px;
+    max-width: 80vw;
+    max-height: 80vw;
+    margin: 0 auto;
+    img {
+        width: 100%;
+        height: 100%;
+        object-fit: contain;
+        object-position: center;
+    }
+}
+
+.bg1 {
+    position: fixed;
+    z-index: -12;
+    left: 0;
+    top: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgb(205,229,238);
+    background: linear-gradient(90deg, rgba(205,229,238,1) 0%, rgba(242,248,249,1) 48%, rgba(228,243,247,1) 100%);
+}
+
+.bg2 {
+    position: fixed;
+    z-index: -11;
+    left: 0;
+    top: 0;
+    width: 100vw;
+    height: 100vh;
+    background: #181818;
+    opacity: 0;
+    clip-path: circle(0px at center);
+    transition: clip-path 1s ease-out, opacity 1s ease-out;
+    &:after {
+        content: "";
+        position: absolute;
+        left: 0;
+        top: 0;
+        z-index: -10;
+        width: 100vw;
+        height: 100vh;
+        background: url("/images/animation/bg2.jpg");
+        background-size: cover;
+        mix-blend-mode: overlay;
+    }
+    &.animated {
+        opacity: 1;
+        clip-path: circle(max(71vw, 71vh) at center);
+        transition: clip-path 2s ease-out, opacity 0.5s ease-out;
+    }
+}
+
+@keyframes stripes {
+    0% {
+        opacity: 0;
+        transform: scale(0.1);
+    }
+    25% {
+        opacity: 0.5;
+    }
+    75% {
+        opacity: 1;
+    }
+    100% {
+        opacity: 0;
+        transform: scale(3);
+    }
+}
+
+.stripe {
+    width: 100vw;
+    height: 100vh;
+    background: url("/images/animation/line.svg");
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center center;
+    z-index: -9;
+    position: fixed;
+    left: 0;
+    top: 0;
+    transform: scale(0.1);
+    transform-origin: center;
+    opacity: 0;
+    &.visible {
+        animation: stripes 4s forwards;
+    }
+}
+
+.animation {
+    margin-top: 30vh !important;
+}
+
+

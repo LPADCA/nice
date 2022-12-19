@@ -29,7 +29,6 @@ const InstructionsElement = ({question, filename}) => {
   };
 
 const HowTo = ({ data, location }) => {
-    console.log(data)
     return (
         <Layout location={location}>
                 <section className="quickstart">
