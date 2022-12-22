@@ -7,9 +7,9 @@ const Element = (data) => {
     const [height, setHeight] = useState(0);
     return (
         <div className={`element ${height !== 0 ? 'open' : ''}`}>
-            <p className="question" onClick={() => setHeight(height === 0 ? 'auto' : 0)}>
+            <button className="question dark" onClick={(e) => {setHeight(height === 0 ? 'auto' : 0);e.preventDefault()}} onKeyUp={(e)=>{if (e.key === 'Enter') {setHeight(height === 0 ? 'auto' : 0);e.preventDefault()}}}>
                 {data.item.question}
-            </p>
+            </button>
             <AnimateHeight
             id="example-panel"
             duration={500}

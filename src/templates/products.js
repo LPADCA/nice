@@ -5,7 +5,7 @@ import "@styles/products.scss"
 
 const productPage = ({ data, location }) => {
     return (
-        <Layout>
+        <Layout location={location} {...Layout.pickSeoProps(data.prismicProducts.data)}>
             <div className="product-page">
                 <div className="container-small">
                     <h1 className="centered">{data.prismicProducts.data.title.text}</h1>
@@ -28,6 +28,9 @@ export const query = graphql`
                 contents {
                     html
                 }
+                seo_title
+                seo_description
+                seo_keywords
             }
         }
     }`

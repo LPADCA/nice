@@ -1,0 +1,124 @@
+{
+  "Videos" : {
+    "title_videos" : {
+      "type" : "StructuredText",
+      "config" : {
+        "single" : "heading2",
+        "label" : "Title"
+      }
+    },
+    "videos" : {
+      "type" : "Group",
+      "config" : {
+        "fields" : {
+          "video_url" : {
+            "type" : "Text",
+            "config" : {
+              "label" : "Video URL"
+            }
+          }
+        },
+        "label" : "videos"
+      }
+    }
+  },
+  "Quick Start" : {
+    "title_quickstart" : {
+      "type" : "StructuredText",
+      "config" : {
+        "single" : "heading2",
+        "label" : "Title"
+      }
+    },
+    "slide" : {
+      "type" : "Group",
+      "config" : {
+        "fields" : {
+          "illustration" : {
+            "type" : "Image",
+            "config" : {
+              "constraint" : { },
+              "thumbnails" : [ ],
+              "label" : "Illustration"
+            }
+          },
+          "text" : {
+            "type" : "StructuredText",
+            "config" : {
+              "multi" : "paragraph,preformatted,heading1,heading2,heading3,heading4,heading5,heading6,strong,em,hyperlink,image,embed,list-item,o-list-item,rtl",
+              "label" : "Text"
+            }
+          }
+        },
+        "label" : "Slide"
+      }
+    }
+  },
+  "User Manual" : {
+    "title_user_manual" : {
+      "type" : "StructuredText",
+      "config" : {
+        "single" : "heading2",
+        "label" : "Title"
+      }
+    },
+    "link" : {
+      "type" : "Link",
+      "config" : {
+        "select" : "media",
+        "label" : "link"
+      }
+    }
+  },
+  "Wraps" : {
+    "title_user_wraps" : {
+      "type" : "StructuredText",
+      "config" : {
+        "single" : "heading1,heading2",
+        "label" : "Title"
+      }
+    },
+    "block" : {
+      "type" : "Group",
+      "config" : {
+        "fields" : {
+          "name" : {
+            "type" : "Text",
+            "config" : {
+              "label" : "Name"
+            }
+          },
+          "download_link" : {
+            "type" : "Link",
+            "config" : {
+              "select" : "media",
+              "label" : "Link"
+            }
+          }
+        },
+        "label" : "Block"
+      }
+    }
+  },
+  "SEO" : {
+    "seo_title" : {
+      "type" : "Text",
+      "config" : {
+        "label" : "Title (maximum 70 characters)"
+      }
+    },
+    "seo_description" : {
+      "type" : "Text",
+      "config" : {
+        "label" : "Description (50–160 characters)"
+      }
+    },
+    "seo_keywords" : {
+      "type" : "Text",
+      "config" : {
+        "label" : "Keywords",
+        "placeholder" : "(list, separated with commas)"
+      }
+    }
+  }
+}

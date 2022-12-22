@@ -5,9 +5,9 @@ const linkResolver = require("./src/utils/linkResolver")
 module.exports = {
     siteMetadata: {
         siteUrl: process.env.SITE_URL || "https://nicerecovery.com/",
-        title: "NICE Recovery",
+        title: "NICE Recovery Systems",
         description:
-            "Nice ",
+            "Nice Recovery Systems",
     },
     plugins: [
         "gatsby-plugin-sitemap",
@@ -28,6 +28,8 @@ module.exports = {
                     homepage: require("./src/schemas/homepage.json"),
                     testimonials: require("./src/schemas/testimonials.json"),
                     faq: require("./src/schemas/faq.json"),
+                    howto_page: require("./src/schemas/howto.json"),
+                    contact_page: require("./src/schemas/contact.json"),
                     404: require("./src/schemas/404.json"),
                     // Your custom types mapped to schemas
                 },
@@ -39,6 +41,12 @@ module.exports = {
                 //page: require("./src/schemas/page.json"),
             },
         },
+        /*{
+            resolve: `gatsby-source-instagram`,
+            options: {
+                username: `3248072863`,
+            },
+        },*/
         /*
         {
             resolve: "gatsby-plugin-google-tagmanager",

@@ -1,79 +1,251 @@
-import React from "react"
+import React, {useState , useRef, useEffect, useLayoutEffect} from "react"
 import { graphql, Link } from "gatsby"
 import Layout from '../assets/components/layout'
 import Faq from "../assets/components/faq"
 //import HowItWorks from "../assets/components/howitworks"
 import Testimonials from "../assets/components/testimonials"
-import { Element } from 'react-scroll'
-import Animation from "../assets/components/animation"
+import { gsap } from "gsap";
+//import { Tween } from 'react-gsap';
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+import "@styles/animation.scss"
 import "@styles/index.scss"
+gsap.registerPlugin(ScrollTrigger);
+
+
+
+const Title = ({children, timeline}) => {
+    const el = useRef();
+    useLayoutEffect(() => {
+        timeline && timeline.to(
+            el.current, 
+            {
+                opacity: 0,
+                duration: 1,
+                scrollTrigger: {
+                    start: "top 20%",
+                    end: "top top-=100",
+                    trigger: el.current,
+                    scrub: true,
+                    toggleActions: "play none none reverse",
+                }
+            }
+        );
+      }, [timeline]);    
+
+    return (
+        <div ref={el}>{children}</div>
+    )
+}
+
+const Block = ({children, timeline, cls, start, end}) => {
+    const el = useRef();
+    useLayoutEffect(() => {
+        timeline && timeline.to(
+            el.current, 
+            {
+                keyframes: [
+                    {opacity: 1, duration: 1},
+                    {opacity: 1, duration: 3},
+                    {opacity: 0, duration: 1},
+                ],
+                scrollTrigger: {
+                    start: start,
+                    end: end,
+                    trigger: "#trigger",
+                    scrub: true,
+                    toggleActions: "play none none reverse",
+                }
+            }
+        );
+      }, [timeline, start, end]);    
+
+    return (
+        <div ref={el} className={`block ${cls}`}>
+            {children}
+        </div>
+    )
+}
+
+
+
+
+
+
+
+const Animation = ({title, blocks}) => {
+    const [tl, setTl] = useState();
+    const [tl2, setTl2] = useState();
+    const wrapperRef = useRef();
+    const videoRef = useRef();
+    //const sizes = [
+    //    [1920, 1080]
+    //]
+    const time_triggers = [
+        [2000, 3000],
+        [4000, 5000],
+        [6000, 7000],
+        [8000, 9000],
+    ]
+    useEffect(() => {
+        videoRef.current.currentTime = 0
+        const tl = gsap.timeline({
+            scrollTrigger: {
+                start: "top top+=2",
+                end: "+=12000",
+                trigger: wrapperRef.current,
+                scrub: true,
+                //pin: true,
+                toggleActions: "play none none reverse",
+                onUpdate: function(self) { 
+                    if(videoRef.current) {
+                      let scrollPos = self.progress;
+                      let videoDuration = videoRef.current.duration;
+                      let videoCurrentTime = videoDuration * scrollPos;
+                      
+                      if(videoCurrentTime) {
+                        videoRef.current.currentTime = videoCurrentTime;
+                      }
+                      //console.log(videoDuration, scrollPos, videoCurrentTime)
+                    }
+                },
+            } 
+        });
+        tl.to(
+            wrapperRef.current,
+            {
+                opacity: 0,
+                scrollTrigger: {
+                    start: "+=13000",
+                    end: "+=1000",
+                    trigger: wrapperRef.current,
+                    scrub: true,
+                    toggleActions: "play none none reverse",
+                }
+            }
+        )
+        setTl(tl);
+        const tl2 = gsap.timeline({});
+        setTl2(tl2);
+        return () => {};
+    }, [wrapperRef, videoRef]);
+
+
+    return (
+        <section className="animation">
+            <Title timeline={tl2}>
+                <div className="welcome centered" dangerouslySetInnerHTML={{__html: title.html}} />
+                <p className="centered">
+                    <a href="/nice1" className="discover">discover</a>
+                </p>
+            </Title>
+            <div id="trigger"/>
+            <div id="video-wrapper" className="video-wrapper" ref={wrapperRef}>
+                <video ref={videoRef} className="video" src="/images/animation/video_1080p.mp4" playsInline={true} webkit-playsinline="true" preload="auto" muted="muted"/>
+            </div>
+            {blocks.map((block, i) => (
+                <Block key={i} timeline={tl2} cls="b1" start={`${time_triggers[i][0]} bottom`} end={`${time_triggers[i][1]} top`}>
+                    <h3>{block.header}</h3>
+                    <p>{block.text}</p>
+                </Block>
+            ))}
+
+            {blocks.map((block, i) => (
+                <Block key={i} timeline={tl2} cls={`c c${i+1}`} start="10000 bottom" end="13000 top">
+                    <h3>{block.header}</h3>
+                    <p>{block.text}</p>
+                </Block>
+            ))}
+        </section>
+    )
+}
+
+const AnimateBorder = ({image}) => {
+    const [tl, setTl] = useState();
+    const imageRef = useRef()
+    useEffect(() => {
+        const tl = gsap.timeline();
+        tl.fromTo(
+            imageRef.current,
+            {
+                borderRadius: 20+"px",
+            },
+            {
+                keyframes: [
+                    {borderRadius: 250+"px", duration: 1},
+                    {borderRadius: 20+"px", duration: 1}
+                ],
+                scrollTrigger: {
+                    start: "top bottom",
+                    end: "bottom top",
+                    trigger: imageRef.current,
+                    scrub: true,
+                    toggleActions: "play none none reverse",
+                }
+            }
+        )
+        setTl(tl);
+        return () => {};
+    }, [imageRef]);
+
+    return (
+        <div className="shadow">
+            <img ref={imageRef} src={image.url} alt={image.alt}/>
+        </div>
+    )
+
+} 
 
 
 const Homepage = ({ data, location }) => {
+
+    const d = data.prismicHomepage.data
     return (
-        <Layout location={location}>
-                <Animation/>
-                <Element name="products"/>
+        <Layout location={location} {...Layout.pickSeoProps(d)}>
+                <Animation title={d.title} blocks={d.blocks}/>
                 <div className="content-wrapper">
                 <section>
                     <div className="container">
                         <div className="products">
                             <div className="top grid">
                                 <div className="left">
-                                    <h2>Quite Simply, It's the Best Recovery System on the Market.</h2>
-                                    <p>* At least that's what the reviews say.</p>
+                                    <h2>{d.products_title.text}</h2>
+                                    <p>{d.products_subtitle}</p>
                                 </div>
                                 <div className="right">
-                                    <p>
-                                        Delivers precise cold therapy without ice - along with programmable and customizable pneumatic compression - in the smallest, lightest and easiest-to-use unit.
-                                    </p>
+                                    <p>{d.products_cta_text}</p>
                                     <Link to="/contact" className="button with-arrow">Contact us</Link>
                                 </div>
                             </div>
                             <div className="items grid">
-                                <div className="item item1">
-                                    <Link to="/nice1">
-                                        <div className="shadow">
-                                            <img src="/tmp-content/img2.jpg"/>
-                                        </div>
-                                        <h4>Nice1 System</h4>
-                                        <p>Delivers precise cold therapy without ice - along with programmable and customizable pneumatic compression - in the smallest.</p>
-                                    </Link>
-
-                                </div>
-                                <div className="item item2">
-                                    <Link to="/wraps">
-                                        <div className="shadow">
-                                            <img src="/tmp-content/img1.jpg"/>
-                                        </div>
-                                        <h4>Therapy Wraps</h4>
-                                        <p>Different therapy wraps</p>
-                                    </Link>
-                                </div>
+                                {d.products.map((item, i)=>(
+                                    <div key={i} className={`item item${i+1}`}>
+                                        <Link to={item.product.url}>
+                                            <AnimateBorder image={item.image}/>
+                                            <h4>{item.header.text}</h4>
+                                            <div dangerouslySetInnerHTML={{__html: item.description.html}}/>
+                                        </Link>
+                                    </div>
+                                ))}
                             </div>
                         </div>
                     </div>
                 </section>
 
-                <Element name="testimonials"/>
                 <Testimonials/>
-
-
-                <Element name="contactus"/>
                 <section className="contact">
                     <div className="container">
                         <div className="grid">
                             <div className="left">
-                                <h2>If You Have Questions, We Have Answers.</h2>
-                                <p>*Really. How Can We Help?</p>
+                                <h2>{d.contact_title.text}</h2>
+                                <p>{d.contact_subtitle}</p>
                             </div>
                             <div className="right">
-                                <p>Just fill out the simple form below and our Boulder, CO-based team will respond to you within 2 working days.</p>
+                                <p>{d.contact_form_cta}</p>
                                 <form>
                                     <input type="text" placeholder="First + last name"/>
                                     <input type="email" placeholder="Email"/>
                                     <textarea placeholder="Your question"></textarea>
-                                    <a href="#" className="button with-arrow">Submit</a>
+                                    <button className="button with-arrow">Submit</button>
                                 </form>
                             </div>
                         </div>
@@ -89,12 +261,12 @@ const Homepage = ({ data, location }) => {
                 <section className="illustration">
                     <div className="grid container">
                         <div className="left">
-                            <img className="top" src="/tmp-content/ill21.jpg"/>
-                            <img className="bottom" src="/tmp-content/ill22.jpg"/>
+                            <img className="top" src={d.ill_images[0].image.url} alt={d.ill_images[0].image.alt}/>
+                            <img className="bottom" src={d.ill_images[1].image.url} alt={d.ill_images[1].image.alt}/>
                         </div>
                         <div className="right">
-                            <h2>Pain Relief + Recovery. Post Surgery or Post Work Out. That’s NICE.</h2>
-                            <p>*Used by top surgeons, trainers, pro athletes and United States Ski & Snowboard.</p>
+                            <h2>{d.ill_title.text}</h2>
+                            <p>{d.ill_subtitle}</p>
                         </div>
                     </div>
                 </section>
@@ -104,12 +276,12 @@ const Homepage = ({ data, location }) => {
 
                 <section className="instagram">
                     <div className="container">
-                        <p className="top">our instagram <a target="_blank" href="https://instagram.com/nicerecovery">@nicerecovery</a></p>
+                        <p className="top">our instagram <a target="_blank" rel="noreferrer" href="https://instagram.com/nicerecovery">@nicerecovery</a></p>
                         <div className="feed">
-                            <img src="/tmp-content/photo1.jpg"/>
-                            <img src="/tmp-content/photo2.jpg"/>
-                            <img src="/tmp-content/photo3.jpg"/>
-                            <img src="/tmp-content/photo4.jpg"/>
+                            <img src="/tmp-content/photo1.jpg" alt=""/>
+                            <img src="/tmp-content/photo2.jpg" alt=""/>
+                            <img src="/tmp-content/photo3.jpg" alt=""/>
+                            <img src="/tmp-content/photo4.jpg" alt=""/>
                         </div>
                     </div>
                 </section>
@@ -129,6 +301,48 @@ export const homepageQuery = graphql`
                 title {
                     html
                     raw
+                    text
+                }
+                blocks {
+                    header
+                    text
+                }
+                seo_title
+                seo_description
+                seo_keywords
+                products {
+                    description {
+                        html
+                    }
+                    header {
+                        text
+                    }
+                    image {
+                        alt
+                        url
+                    }
+                    product {
+                        url
+                    }
+                }
+                products_subtitle
+                products_cta_text
+                products_title {
+                    text
+                }
+                contact_form_cta
+                contact_subtitle
+                contact_title {
+                    text
+                }
+                ill_images {
+                    image {
+                        alt
+                        url
+                    }
+                }
+                ill_subtitle
+                ill_title {
                     text
                 }
             }

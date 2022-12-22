@@ -1,4 +1,13 @@
+.links {
+    a {
+        padding: 10px;
+        white-space: nowrap;
+        cursor: pointer;
+    }
+}
+
 .quickstart {
+    margin-top: 30px;
     .grid {
         grid-template-columns: 1fr 1fr;
         gap: 20px;
@@ -69,12 +78,14 @@
     .element {
         padding: 20px 30px;
         border: 1px solid #E3ECEF;
-        p {
-            margin: 10px 0;
-            font-size: 20px;
-        }
         .question {
+            width: 100%;
+            cursor: pointer;
+            text-align: left;
+            background: transparent;
+            border: none;
             margin: 0;
+            padding: 0;
             font-size: 24px;
             padding-right: 30px;
             position: relative;
@@ -82,7 +93,7 @@
             &:before {
                 position: absolute;
                 right: 0;
-                top: 20px;
+                top: 15px;
                 content: "";
                 width: 25px;
                 height: 1px;
@@ -91,7 +102,7 @@
             &:after {
                 position: absolute;
                 right: 0;
-                top: 20px;
+                top: 15px;
                 content: "";
                 width: 25px;
                 height: 1px;

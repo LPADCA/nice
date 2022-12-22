@@ -13,9 +13,9 @@ const Footer = () => {
                     <img className="logo" src="/images/nice-logo-white.svg" alt="Nice logo"/>
                 </Link>
                 <div className="logos">
-                    <a target="_blank" href="https://www.instagram.com/nicerecovery/"><div className="icon"><FiInstagram size="1.2em"/></div></a>
-                    <a target="_blank" href="https://www.facebook.com/NiceRecovery/"><div className="icon"><FiFacebook size="1.2em"/></div></a>
-                    <a target="_blank" href="https://vimeo.com/user85858763"><div className="icon"><RiVimeoLine size="1.2em"/></div></a>
+                    <a target="_blank" rel="noreferrer" href="https://www.instagram.com/nicerecovery/"><div className="icon"><FiInstagram size="1.2em"/></div></a>
+                    <a target="_blank" rel="noreferrer" href="https://www.facebook.com/NiceRecovery/"><div className="icon"><FiFacebook size="1.2em"/></div></a>
+                    <a target="_blank" rel="noreferrer" href="https://vimeo.com/user85858763"><div className="icon"><RiVimeoLine size="1.2em"/></div></a>
                 </div>
                 <div className="menu">
                     <div className="left">
@@ -34,7 +34,7 @@ const Footer = () => {
                                             <input type="email" placeholder="Email"/>
                                         </div>
                                         <div className="r">
-                                            <a href="#" className="button white with-arrow just-arrow"></a>
+                                            <button/>
                                         </div>
                                     </div>
                                 </form>

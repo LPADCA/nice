@@ -5,7 +5,7 @@ import "@styles/infopage.scss"
 
 const infoPage = ({ data, location }) => {
     return (
-        <Layout>
+        <Layout location={location} {...Layout.pickSeoProps(data.prismicInformationPage.data)}>
             <div className="info-page">
                 <div className="container-small">
                     <h1 className="centered">{data.prismicInformationPage.data.title.text}</h1>
@@ -28,6 +28,9 @@ export const query = graphql`
                 content {
                     html
                 }
+                seo_title
+                seo_description
+                seo_keywords
             }
         }
     }`

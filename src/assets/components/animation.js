@@ -1,4 +1,4 @@
-import React, {useState , useRef, useEffect, useLayoutEffect, useCallback} from "react"
+import React, {useState , useRef, useEffect, useLayoutEffect} from "react"
 import { gsap } from "gsap";
 //import { Tween } from 'react-gsap';
 import { ScrollTrigger } from "gsap/ScrollTrigger";
@@ -37,7 +37,7 @@ const Block = ({children, timeline, cls, start, end}) => {
             {
                 keyframes: [
                     {opacity: 1, duration: 1},
-                    {opacity: 1, duration: 1},
+                    {opacity: 1, duration: 3},
                     {opacity: 0, duration: 1},
                 ],
                 scrollTrigger: {
@@ -64,19 +64,25 @@ const Block = ({children, timeline, cls, start, end}) => {
 
 
 
-const Animation = ({}) => {
+const Animation = ({title, blocks}) => {
     const [tl, setTl] = useState();
     const [tl2, setTl2] = useState();
     const wrapperRef = useRef();
     const videoRef = useRef();
-    const sizes = [
-        [1920, 1080]
+    //const sizes = [
+    //    [1920, 1080]
+    //]
+    const time_triggers = [
+        [2000, 3000],
+        [4000, 5000],
+        [6000, 7000],
+        [8000, 9000],
     ]
     useEffect(() => {
         videoRef.current.currentTime = 0
         const tl = gsap.timeline({
             scrollTrigger: {
-                start: "top top",
+                start: "top top+=2",
                 end: "+=12000",
                 trigger: wrapperRef.current,
                 scrub: true,
@@ -119,53 +125,28 @@ const Animation = ({}) => {
     return (
         <section className="animation">
             <Title timeline={tl2}>
-                <h1 className="centered">Cold + Compression<br/>
-                    Therapy System</h1>
+                <div className="welcome centered" dangerouslySetInnerHTML={{__html: title.html}} />
                 <p className="centered">
-                    <a href="#" className="discover">discover products</a>
+                    <a href="/nice1" className="discover">discover</a>
                 </p>
             </Title>
             <div id="trigger"/>
             <div id="video-wrapper" className="video-wrapper" ref={wrapperRef}>
                 <video ref={videoRef} className="video" src="/images/animation/video_1080p.mp4" playsInline={true} webkit-playsinline="true" preload="auto" muted="muted"/>
             </div>
-            <Block timeline={tl2} cls="b1" start="+=2000 bottom" end="+=3000 top">
-                <h3>No Ice</h3>
-                <p>NICE1 is an iceless system. 
-                This is a clear point of differentiation when compared with other cold therapy devices.</p>
-            </Block>
-            <Block timeline={tl2} cls="b1" start="+=4000 bottom" end="+=5000 top">
-                <h3>Smaller + Lighter</h3>
-                <p>NICE1 is the smallest and lightest cold + compression therapy device on the market.</p>
-            </Block>
-            <Block timeline={tl2} cls="b1" start="+=6000 bottom" end="+=7000 top">
-                <h3>Design forward</h3>
-                <p>NICE1 is focused on a superior user experience, blending pro-tested design with state-of-the-art technology.</p>
-            </Block>
-            <Block timeline={tl2} cls="b1" start="+=8000 bottom" end="+=9000 top">
-                <h3>Simplicity</h3>
-                <p>NICE1 has an extremely intuitive graphical touch screen interface that makes it easy to operate.</p>
-            </Block>
+            {blocks.map((block, i) => (
+                <Block key={i} timeline={tl2} cls="b1" start={`${time_triggers[i][0]} bottom`} end={`${time_triggers[i][1]} top`}>
+                    <h3>{block.header}</h3>
+                    <p>{block.text}</p>
+                </Block>
+            ))}
 
-            <Block timeline={tl2} cls="c c1" start="+=10000 bottom" end="+=13000 top">
-                <h3>No Ice</h3>
-                <p>NICE1 is an iceless system. 
-                This is a clear point of differentiation when compared with other cold therapy devices.</p>
-            </Block>
-            <Block timeline={tl2} cls="c c2" start="+=10000 bottom" end="+=13000 top">
-                <h3>Smaller + Lighter</h3>
-                <p>NICE1 is the smallest and lightest cold + compression therapy device on the market.</p>
-            </Block>
-            <Block timeline={tl2} cls="c c3" start="+=10000 bottom" end="+=13000 top">
-                <h3>Design forward</h3>
-                <p>NICE1 is focused on a superior user experience, blending pro-tested design with state-of-the-art technology.</p>
-            </Block>
-            <Block timeline={tl2} cls="c c4" start="+=10000 bottom" end="+=13000 top">
-                <h3>Simplicity</h3>
-                <p>NICE1 has an extremely intuitive graphical touch screen interface that makes it easy to operate.</p>
-            </Block>
-
-
+            {blocks.map((block, i) => (
+                <Block key={i} timeline={tl2} cls={`c c${i+1}`} start="10000 bottom" end="13000 top">
+                    <h3>{block.header}</h3>
+                    <p>{block.text}</p>
+                </Block>
+            ))}
         </section>
     )
 }

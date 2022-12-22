@@ -5,7 +5,8 @@
     width: 100%;
     box-sizing: border-box;
     z-index: 998;
-    padding: 30px;
+    padding: 20px 30px;
+    background-color: white;
     .container {
         padding: 0;
     }
@@ -45,6 +46,9 @@
             display: none;
             .hamburger-react {
                 z-index: 999;
+                div {
+                    background-color: #181818;
+                }
             }
             .mobile-menu-wrapper {
                 position: fixed;

@@ -1,4 +1,4 @@
-import React, { Component, useState } from "react"
+import React, { Component } from "react"
 import { Slant as Hamburger } from 'hamburger-react'
 //import { Link as ScrollLink } from 'react-scroll'
 import { Link } from "gatsby"
@@ -52,13 +52,15 @@ class Header extends Component {
         super(props);
         this.location = props.location
         this.state = {
-            isOpen: false
+            isOpen: false,
+            hamburgerColor: ''
         }
         this.setOpen = this.setOpen.bind(this)
         this.forceClose = this.forceClose.bind(this)
     }
 
     setOpen(isOpenValue) {
+        this.state.isOpen ? this.setState({hamburgerColor: ''}) : this.setState({hamburgerColor: '#181818'})
         this.setState({isOpen: isOpenValue})
     }
 
@@ -99,7 +101,7 @@ class Header extends Component {
                         </ul>
                         </div>                
                         <div className="hamburger-wrapper">
-                            <Hamburger distance="sm" toggled={this.state.isOpen} toggle={this.setOpen}/>
+                            <Hamburger distance="sm" toggled={this.state.isOpen} toggle={this.setOpen} color={this.state.hamburgerColor}/>
                             <MobileMenu isOpen={this.state.isOpen} forceClose={this.forceClose}/>
                         </div>
                 </div>

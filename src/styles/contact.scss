@@ -1,0 +1,81 @@
+.contact-form {
+    .grid {
+        display: grid;
+        gap: 15px;
+        grid-template-columns: 2fr 3fr;
+        .left {
+            h3,h4,p {
+                margin: 0;
+            }
+            h3 {
+                font-size: 32px;
+            }
+            h4 {
+                margin-top: 20px;
+                font-size: 24px;
+            }
+            p {
+                font-size: 16px;
+                line-height: 22px;
+                margin-top: 5px;
+            }
+        }
+        .right {
+            .na {
+                display: none;
+            }
+            input[type=text], input[type=phone], input[type=email]{
+                display: block;
+                width: 100%;
+            }
+            textarea {
+                width: 100%;
+                height: 100px;
+            }
+            .top {
+                display: grid;
+                gap: 15px;
+                grid-template-columns: 1fr 1fr;                
+            }
+            label {
+                display: block;
+                font-size: 20px;
+                margin-top: 20px;
+            }
+            p.sub {
+                font-size: 16px;
+                font-weight: 300;
+                margin: 0;
+            }
+            .sent {
+                align-items: center;
+                display: flex;
+                height: 100%;
+                p {
+                    text-align: center;
+                    width: 100%;
+                }
+            }
+
+        }
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .contact-form {
+        .grid {
+            grid-template-columns: 1fr;
+            .right {
+                .top {
+                    grid-template-columns: 1fr;
+                    .spacer {
+                        display: none;
+                    }
+                }
+                textarea {
+                    height: 200px;
+                }
+            }
+        }
+    }   
+}

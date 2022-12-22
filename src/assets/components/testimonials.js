@@ -36,15 +36,15 @@ const staticQuery = graphql`
     }
 `
 
-class Testimonials extends Component {
+class TestimonialsInner extends Component {
     constructor(props) {
         super(props);
         this.swipermain = createRef()
         this.typeStrings = props.data.prismicTestimonials.data.element.map(el => el.category);
         this.typeInstance = null;
         this.state = {
-            speed: props.speed ? props.speed : 500,
-            delay: props.delay ? props.delay : 2000,
+            speed: props.speed ? props.speed : 800,
+            delay: props.delay ? props.delay : 4000,
             thumbsSwiper: null,
             current: 0,
             indices: Array(6).fill(0),
@@ -76,18 +76,6 @@ class Testimonials extends Component {
         }
     }
 
-    /*
-                                    sequence={['patients', 1400, 'surgeons', 1400, 'PTs', 1400, 'patients', 1400, 'PTs', 1400, 'patients']}
-                                wrapper="span"
-                                cursor={true}
-                                speed={15} 
-                                deletionSpeed={15}
-                                repeat={Infinity}
-                                style={{ textDecoration: 'underline', fontStyle: 'italic' }}
-                                />
-    */
-
-
     render() {
         return (
             <section className="testimonials">
@@ -96,7 +84,6 @@ class Testimonials extends Component {
                         <h2>What <TypeIt
                             options={{
                             loop: false,
-                            lifeLike: false,
                             speed: 50,
                             }}
                             getBeforeInit={(instance) => {
@@ -112,7 +99,7 @@ class Testimonials extends Component {
                                 
                         <div className="countdown">
                             {this.data.prismicTestimonials.data.element.map((item, index) => (
-                                <div key={index} className="profile" onClick={this.switchSlide.bind(this, (index + 1))}>
+                                <button key={index} className="profile" onClick={this.switchSlide.bind(this, (index + 1))}>
                                     <CircularProgressbarWithChildren 
                                         value={this.state.indices[index]} 
                                         strokeWidth={2}
@@ -125,7 +112,7 @@ class Testimonials extends Component {
                                         >
                                         <img className={this.state.indices[index] ? 'active' : ''} src={item.profile.url} width="75" height="75" alt="Profile"/>
                                     </CircularProgressbarWithChildren>
-                                </div>
+                                </button>
                             ))}
                         </div>
                     </div>
@@ -174,11 +161,12 @@ class Testimonials extends Component {
 
 /* export default Testimonials */
 
-export default () => (
+const Testimonials = () => (
     <StaticQuery
       query={staticQuery}
       render={(data) => (
-        <Testimonials data={data}/>
+        <TestimonialsInner data={data}/>
       )}
     />
-  )
+)
+export default Testimonials

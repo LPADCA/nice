@@ -12,7 +12,7 @@
                 text-align: center;
             }
             h2 {
-                font-size: 72px;
+                font-size: 80px;
                 color: white;
                 margin: 0;
                 span {
@@ -28,6 +28,9 @@
                 .profile {
                     position: relative;
                     display: inline-block;
+                    background-color: transparent;
+                    padding: 0;
+                    border: none;
                     margin: 6px;
                     width: 89px;
                     height: 89px;
@@ -86,37 +89,28 @@
             .card_header {
                 .author {
                     font-size: 20px;
+                    line-height: 26px;
                     font-weight: 500;
                     display: block;
                 }
                 .position {
                     font-size: 20px;
+                    line-height: 26px;
                     color: #8FB2C6;
                 }
             }
             .text {
                 margin-top: 80px;
                 p {
-                    font-size: 26px;
+                    font-size: 32px;
+                    line-height: 38px;
+                    margin: 0;
                 }
             }
         }
 
     }
 }
-
-@media screen and (max-width: 1200px) {
-    .testimonials {
-        .grid {
-            .left {
-                h2 {
-                    font-size: 54px;
-                }
-            }
-        }
-    }
-}
-
 
 @media screen and (max-width: 768px) {
     .testimonials {
@@ -125,7 +119,7 @@
             display: block;
             .left {
                 h2 {
-                    font-size: 40px;
+                    font-size: 32px;
                     margin: 24px 0 32px 0;
                 }
                 .countdown {
@@ -135,11 +129,11 @@
                     //cursor: grab;
                     //overflow: auto;
                     .profile {
-                        width: 76px;
-                        height: 76px;
+                        width: 64px;
+                        height: 64px;
                         img {
-                            width: 64px;
-                            height: 64px;
+                            width: 52px;
+                            height: 52px;
                         }
                     }
                 }
@@ -148,6 +142,24 @@
                 margin-top: 20px;
                 .nav {
                     display: none;
+                }
+                .card {
+                    .card_header {
+                        .author {
+                            font-size: 16px;
+                            line-height: 20px;
+                        }
+                        .position {
+                            font-size: 16px;
+                            line-height: 20px;
+                        }
+                    }
+                    .text {
+                        p {
+                            font-size: 20px;
+                            line-height: 26px;
+                        }
+                    }
                 }
             }
         }

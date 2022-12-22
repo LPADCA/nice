@@ -1,11 +1,168 @@
 {
-    "Main" : {
-      "title" : {
-        "type" : "StructuredText",
-        "config" : {
-          "single" : "heading1",
-          "label" : "Title"
-        }
+  "Main": {
+    "title": {
+      "type": "StructuredText",
+      "config": {
+        "single": "heading1",
+        "label": "Title"
+      }
+    },
+    "blocks": {
+      "type": "Group",
+      "config": {
+        "fields": {
+          "header": {
+            "type": "Text",
+            "config": {
+              "label": "Header"
+            }
+          },
+          "text": {
+            "type": "Text",
+            "config": {
+              "label": "Text"
+            }
+          }
+        },
+        "label": "Selling Points (4 items)"
+      }
+    }
+  },
+  "SEO": {
+    "seo_title": {
+      "type": "Text",
+      "config": {
+        "label": "Title (maximum 70 characters)"
+      }
+    },
+    "seo_description": {
+      "type": "Text",
+      "config": {
+        "label": "Description (50–160 characters)"
+      }
+    },
+    "seo_keywords": {
+      "type": "Text",
+      "config": {
+        "label": "Keywords",
+        "placeholder": "(list, separated with commas)"
+      }
+    }
+  },
+  "Products": {
+    "products_title": {
+      "type": "StructuredText",
+      "config": {
+        "single": "heading2",
+        "label": "Title"
+      }
+    },
+    "products_subtitle": {
+      "type": "Text",
+      "config": {
+        "label": "Description"
+      }
+    },
+    "products_cta_text": {
+      "type": "Text",
+      "config": {
+        "label": "Contact CTA"
+      }
+    },
+    "products": {
+      "type": "Group",
+      "config": {
+        "fields": {
+          "image": {
+            "type": "Image",
+            "config": {
+              "constraint": {
+                "width": null,
+                "height": null
+              },
+              "thumbnails": [],
+              "label": "Image"
+            }
+          },
+          "header": {
+            "type": "StructuredText",
+            "config": {
+              "single": "heading3",
+              "label": "Header"
+            }
+          },
+          "description": {
+            "type": "StructuredText",
+            "config": {
+              "multi": "paragraph,preformatted,heading1,heading2,heading3,heading4,heading5,heading6,strong,em,hyperlink,image,embed,list-item,o-list-item,rtl",
+              "label": "Description"
+            }
+          },
+          "product": {
+            "type": "Link",
+            "config": {
+              "select": "document",
+              "customtypes": [
+                "products"
+              ],
+              "label": "Product"
+            }
+          }
+        },
+        "label": "products"
+      }
+    }
+  },
+  "Contact": {
+    "contact_title": {
+      "type": "StructuredText",
+      "config": {
+        "single": "heading3",
+        "label": "Title"
+      }
+    },
+    "contact_subtitle": {
+      "type": "Text",
+      "config": {
+        "label": "Description"
+      }
+    },
+    "contact_form_cta": {
+      "type": "Text",
+      "config": {
+        "label": "Form CTA"
+      }
+    }
+  },
+  "Illustrative": {
+    "ill_title": {
+      "type": "StructuredText",
+      "config": {
+        "single": "heading3",
+        "label": "Title"
+      }
+    },
+    "ill_subtitle": {
+      "type": "Text",
+      "config": {
+        "label": "Description"
+      }
+    },
+    "ill_images": {
+      "type": "Group",
+      "config": {
+        "fields": {
+          "image": {
+            "type": "Image",
+            "config": {
+              "constraint": {},
+              "thumbnails": [],
+              "label": "image"
+            }
+          }
+        },
+        "label": "Images"
       }
     }
   }
+}
