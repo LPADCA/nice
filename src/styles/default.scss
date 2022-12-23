@@ -166,3 +166,27 @@ main {
     }
 }
 
+.scroll-down-arrow {
+    position: fixed;
+    z-index: 999;
+    width: 60px;
+    height: 60px;
+    right: 40px;
+    bottom: 40px;
+    background-color: transparent;
+    border-radius: 100px;
+    &:after {
+        content: "";
+        display: block;
+        left: 0;
+        top: 0;
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        background-size: 50px;
+        background-position: center center;
+        background-repeat: no-repeat;
+        background-image: url("data:image/svg+xml,%3Csvg width='46' height='43' viewBox='0 0 46 43' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M1 18L23 41L45 18' stroke='black' stroke-width='1.5'/%3E%3Cpath d='M23 40L23 0' stroke='black' stroke-width='1.5'/%3E%3C/svg%3E%0A");
+    }
+}
+

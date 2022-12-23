@@ -75,6 +75,7 @@ const Block = ({children, timeline, cls, start, end}) => {
 const Animation = ({title, blocks}) => {
     const [tl, setTl] = useState();
     const [tl2, setTl2] = useState();
+    const [tl3, setTl3] = useState();
     const wrapperRef = useRef();
     const videoRef = useRef();
     //const sizes = [
@@ -115,10 +116,10 @@ const Animation = ({title, blocks}) => {
             {
                 opacity: 0,
                 scrollTrigger: {
-                    start: "+=13000",
-                    end: "+=1000",
-                    trigger: wrapperRef.current,
+                    start: "top top",
+                    end: "+=500",
                     scrub: true,
+                    trigger: "#cover-trigger",
                     toggleActions: "play none none reverse",
                 }
             }
@@ -126,6 +127,8 @@ const Animation = ({title, blocks}) => {
         setTl(tl);
         const tl2 = gsap.timeline({});
         setTl2(tl2);
+        const tl3 = gsap.timeline({});
+        setTl3(tl3);
         return () => {};
     }, [wrapperRef, videoRef]);
 
@@ -139,6 +142,7 @@ const Animation = ({title, blocks}) => {
                 </p>
             </Title>
             <div id="trigger"/>
+            <ScrollArrow timeline={tl3}/>
             <div id="video-wrapper" className="video-wrapper" ref={wrapperRef}>
                 <video ref={videoRef} className="video" src="/images/animation/video_1080p.mp4" playsInline={true} webkit-playsinline="true" preload="auto" muted="muted"/>
             </div>
@@ -158,6 +162,29 @@ const Animation = ({title, blocks}) => {
         </section>
     )
 }
+
+const ScrollArrow = ({timeline}) => {
+    const el = useRef();
+    useLayoutEffect(() => {
+        timeline && timeline.to(
+            el.current, 
+            {
+                opacity: 0,
+                scrollTrigger: {
+                    start: "top top",
+                    end: "+=500",
+                    scrub: true,
+                    trigger: "#cover-trigger",
+                    toggleActions: "play none none reverse",
+                }
+            }
+        );
+      }, [timeline]);   
+    return (
+        <div ref={el} className="scroll-down-arrow"/>
+    )
+}
+
 
 const AnimateBorder = ({image}) => {
     const [tl, setTl] = useState();
@@ -202,7 +229,7 @@ const Homepage = ({ data, location }) => {
     return (
         <Layout location={location} {...Layout.pickSeoProps(d)}>
                 <Animation title={d.title} blocks={d.blocks}/>
-                <div className="content-wrapper">
+                <div id="cover-trigger" className="content-wrapper">
                 <section>
                     <div className="container">
                         <div className="products">

@@ -39,6 +39,7 @@ footer {
                     margin-top: 20px;
                     a {
                         color: white;
+                        font-size: 72px;
                     }
                     button {
                         padding: 26px;
@@ -80,14 +81,6 @@ footer {
                             width: 100%;
                             box-sizing: border-box;
                             max-width: 400px;
-                        }
-                        input[type=submit] {
-                            &:after {
-                                filter: invert(.7)
-                            }
-                        }
-                        a {
-                            display: inline;
                         }
                     }
                 }
