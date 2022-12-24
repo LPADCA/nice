@@ -11,6 +11,14 @@
       "type": "Group",
       "config": {
         "fields": {
+          "icon": {
+            "type": "Image",
+            "config": {
+              "constraint": {},
+              "thumbnails": [],
+              "label": "Icon"
+            }
+          },
           "header": {
             "type": "Text",
             "config": {

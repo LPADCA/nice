@@ -58,7 +58,7 @@ return (
                             <div className="card">
                                 <h4>{data.prismicFaq.data.header.text}</h4>
                                 <div dangerouslySetInnerHTML={{__html:data.prismicFaq.data.text.html}}/>
-                                <Link to="" className="button with-arrow white lite">{data.prismicFaq.data.button_text}</Link>
+                                <Link to="/contact" className="button with-arrow white lite">{data.prismicFaq.data.button_text}</Link>
                             </div>
                         </div>
                         <div className="right">

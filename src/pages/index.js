@@ -155,6 +155,7 @@ const Animation = ({title, blocks}) => {
 
             {blocks.map((block, i) => (
                 <Block key={i} timeline={tl2} cls={`c c${i+1}`} start="10000 bottom" end="13000 top">
+                    <img src={block.icon.url} alt={block.icon.alt} width="60"/>
                     <h3>{block.header}</h3>
                     <p>{block.text}</p>
                 </Block>
@@ -333,6 +334,10 @@ export const homepageQuery = graphql`
                 blocks {
                     header
                     text
+                    icon {
+                        url
+                        alt
+                    }
                 }
                 seo_title
                 seo_description
