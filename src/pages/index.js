@@ -7,7 +7,6 @@ import Testimonials from "../assets/components/testimonials"
 import { gsap } from "gsap";
 //import { Tween } from 'react-gsap';
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import ScaleLoader from "react-spinners/ScaleLoader";
 import "@styles/animation.scss"
 import "@styles/index.scss"
 gsap.registerPlugin(ScrollTrigger);
@@ -239,13 +238,7 @@ const AnimateBorder = ({image}) => {
 const Preload = ({loading}) => {
     return (
         <div className={`preload ${loading ? 'visible' : ''}`}>
-            <ScaleLoader
-                color='white'
-                loading={loading}
-                size={100}
-                aria-label="Loading Spinner"
-                data-testid="loader"
-            />
+            <img src="/images/loading.gif" width="100" height="100" alt="Loading"/>
         </div>
     )
 }
