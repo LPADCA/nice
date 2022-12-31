@@ -6,6 +6,7 @@
     box-sizing: border-box;
     z-index: 998;
     padding: 20px 30px;
+    pointer-events: none;
     //background-color: white;
     .container {
         padding: 0;
@@ -15,6 +16,9 @@
         grid-template-columns: minmax(30%, max-content) auto;
         gap: 20px;
         align-items: center;
+        &>div {
+            pointer-events: all;
+        }
         .logo-wrapper {
             .logo {
                 width: 100%;

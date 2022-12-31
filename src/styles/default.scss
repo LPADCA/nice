@@ -190,3 +190,20 @@ main {
     }
 }
 
+.preload {
+    display: none;
+    position: fixed;
+    z-index: 1010;
+    background: #181818;
+    background: radial-gradient(circle, rgba(57,59,68,1) 2%, rgba(24,24,24,1) 100%);
+    width: 100vw;
+    height: 100vh;
+    left: 0;
+    top: 0;
+    margin-top: 0;
+    &.visible {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+}

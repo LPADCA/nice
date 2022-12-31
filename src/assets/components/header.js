@@ -76,34 +76,34 @@ class Header extends Component {
                     <div className="logo-wrapper">
                         <Link to="/"><img className="logo" src="/images/nice-logo-extended-dark.svg" alt="Nice logo"/></Link>
                     </div>
-                        <div className="local-menu-wrapper">
-                            <ul>
-                                <li>
-                                    <Link className="dark" to="/">
-                                        Home   
-                                    </Link>
-                                </li>
-                                <li>
-                                    <Link className="dark" to="/nice1">
-                                        Nice1   
-                                    </Link>
-                                </li>
-                                <li>
-                                    <Link className="dark" to="/howto">
-                                        How To's 
-                                    </Link>
-                                </li>
-                                <li>
-                                    <Link className="dark" to="/contact">
-                                        Contact us 
-                                    </Link>
-                                </li>
+                    <div className="local-menu-wrapper">
+                        <ul>
+                            <li>
+                                <Link className="dark" to="/">
+                                    Home   
+                                </Link>
+                            </li>
+                            <li>
+                                <Link className="dark" to="/nice1">
+                                    Nice1   
+                                </Link>
+                            </li>
+                            <li>
+                                <Link className="dark" to="/howto">
+                                    How To's 
+                                </Link>
+                            </li>
+                            <li>
+                                <Link className="dark" to="/contact">
+                                    Contact us 
+                                </Link>
+                            </li>
                         </ul>
-                        </div>                
-                        <div className="hamburger-wrapper">
+                    </div>                
+                    <div className="hamburger-wrapper">
                             <Hamburger distance="sm" toggled={this.state.isOpen} toggle={this.setOpen} color={this.state.hamburgerColor}/>
                             <MobileMenu isOpen={this.state.isOpen} forceClose={this.forceClose}/>
-                        </div>
+                    </div>
                 </div>
             </div>
         </div>

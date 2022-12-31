@@ -7,9 +7,11 @@ import Testimonials from "../assets/components/testimonials"
 import { gsap } from "gsap";
 //import { Tween } from 'react-gsap';
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import ScaleLoader from "react-spinners/ScaleLoader";
 import "@styles/animation.scss"
 import "@styles/index.scss"
 gsap.registerPlugin(ScrollTrigger);
+
 
 
 
@@ -76,6 +78,7 @@ const Animation = ({title, blocks}) => {
     const [tl, setTl] = useState();
     const [tl2, setTl2] = useState();
     const [tl3, setTl3] = useState();
+    const [loading, setLoading] = useState(true);
     const wrapperRef = useRef();
     const videoRef = useRef();
     //const sizes = [
@@ -135,6 +138,7 @@ const Animation = ({title, blocks}) => {
 
     return (
         <section className="animation">
+            <Preload loading={loading}/>
             <Title timeline={tl2}>
                 <div className="welcome centered" dangerouslySetInnerHTML={{__html: title.html}} />
                 <p className="centered">
@@ -144,7 +148,16 @@ const Animation = ({title, blocks}) => {
             <div id="trigger"/>
             <ScrollArrow timeline={tl3}/>
             <div id="video-wrapper" className="video-wrapper" ref={wrapperRef}>
-                <video ref={videoRef} className="video" src="/images/animation/video_1080p.mp4" playsInline={true} webkit-playsinline="true" preload="auto" muted="muted"/>
+                <video 
+                    ref={videoRef} 
+                    className="video" 
+                    src="/images/animation/video_1080p.mp4" 
+                    playsInline={true} 
+                    webkit-playsinline="true" 
+                    preload="auto" 
+                    muted="muted"
+                    onCanPlayThrough={() => setLoading(false)}
+                    />
             </div>
             {blocks.map((block, i) => (
                 <Block key={i} timeline={tl2} cls="b1" start={`${time_triggers[i][0]} bottom`} end={`${time_triggers[i][1]} top`}>
@@ -221,11 +234,24 @@ const AnimateBorder = ({image}) => {
         </div>
     )
 
-} 
+}
+
+const Preload = ({loading}) => {
+    return (
+        <div className={`preload ${loading ? 'visible' : ''}`}>
+            <ScaleLoader
+                color='white'
+                loading={loading}
+                size={100}
+                aria-label="Loading Spinner"
+                data-testid="loader"
+            />
+        </div>
+    )
+}
 
 
 const Homepage = ({ data, location }) => {
-
     const d = data.prismicHomepage.data
     return (
         <Layout location={location} {...Layout.pickSeoProps(d)}>
