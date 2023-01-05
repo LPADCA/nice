@@ -87,7 +87,9 @@ const Animation = ({title, blocks}) => {
     function updateSize() {
         const h = window.innerHeight;
         const w = window.innerWidth;
-        h > w ? setRatio('s') : setRatio('h');
+        if (w>=1.3*h) {setRatio('h');console.log('Wide',w,h)}
+        else if (w<1.3*h && w>h*0.67) {setRatio('s');console.log('Square',w,h)}
+        else {setRatio('v');console.log('Tall',w,h)}
     }
 
     useEffect(() => {
@@ -103,7 +105,6 @@ const Animation = ({title, blocks}) => {
                 onUpdate: function(self) {
                     if(videoRef.current) {
                       let scrollPos = self.progress;
-                      console.log(scrollPos);
                     if (scrollPos > 0.49 && scrollPos < 1) {
                         setInvert(true);
                         document.getElementById('header').classList.add('white');
