@@ -14,7 +14,7 @@ gsap.registerPlugin(ScrollTrigger);
 
 
 
-const Title = ({children, timeline}) => {
+const Title = ({children, className, timeline}) => {
     const el = useRef();
     useLayoutEffect(() => {
         timeline && timeline.to(
@@ -22,10 +22,11 @@ const Title = ({children, timeline}) => {
             {
                 opacity: 0,
                 duration: 1,
+                y: -150,
                 scrollTrigger: {
-                    start: "top 20%",
-                    end: "top top-=100",
-                    trigger: el.current,
+                    start: "top top",
+                    end: "+=350 top",
+                    trigger: "#animation",
                     scrub: true,
                     toggleActions: "play none none reverse",
                 }
@@ -34,7 +35,7 @@ const Title = ({children, timeline}) => {
       }, [timeline]);    
 
     return (
-        <div ref={el}>{children}</div>
+        <div className={className} ref={el}>{children}</div>
     )
 }
 
@@ -156,12 +157,12 @@ const Animation = ({title, blocks}) => {
     }, []);
 
     return (
-        <section className="animation">
+        <section id="animation" className="animation">
             <div>
                 <Preload loading={loading}/>
-                <Title timeline={tl2}>
-                    <div className="welcome centered" dangerouslySetInnerHTML={{__html: title.html}} />
-                    <p className="centered">
+                <Title timeline={tl2} className="welcome centered">
+                    <div dangerouslySetInnerHTML={{__html: title.html}} />
+                    <p>
                         <a href="/nice1" className="discover">discover</a>
                     </p>
                 </Title>
@@ -276,7 +277,7 @@ const Homepage = ({ data, location }) => {
     return (
         <Layout location={location} {...Layout.pickSeoProps(d)}>
                 <Animation title={d.title} blocks={d.blocks}/>
-                <div id="cover-trigger" className="content-wrapper container">
+                <div id="cover-trigger" className="content-wrapper">
                 <section>
                     <div className="container">
                         <div className="products">

@@ -5,7 +5,6 @@
     transform: translateX(-50%);
     width: 100vw;
     height: 100vh;
-    max-width: 1400px;
     margin: 0 auto !important;
     h1 {
         margin-top: 0;
@@ -13,6 +12,14 @@
     &>div {
         position: relative;
         height: 100vh;
+    }
+    .welcome {
+        position: fixed;
+        z-index: 900;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+
     }
     .video-wrapper {
         z-index: -5;
@@ -26,10 +33,9 @@
             top: 50%;
             transform: translate(-50%, -50%);
             width: 100%;
-            max-width: 1400px;
             height: 100%;
             object-fit: cover;
-            object-position: center bottom;
+            object-position: center;
         }
     }
 
@@ -73,25 +79,25 @@
         }
         &.c1 {
             left: 50px;
-            top: 20%;
+            top: 15%;
             width: 40%;
             max-width: 300px;
         }
         &.c2 {
             left: 50px;
-            bottom: 20%;
+            bottom: 15%;
             width: 40%;
             max-width: 300px;
         }
         &.c3 {
             right: 50px;
-            top: 20%;
+            top: 15%;
             width: 40%;
             max-width: 300px;
         }
         &.c4 {
             right: 50px;
-            bottom: 20%;
+            bottom: 15%;
             width: 40%;
             max-width: 300px;
         }
