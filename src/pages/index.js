@@ -80,6 +80,8 @@ const Animation = ({title, blocks}) => {
     const [loading, setLoading] = useState(true);
     const wrapperRef = useRef();
     const videoRef = useRef();
+    const [ratio, setRatio] = useState('s');
+    const [invert, setInvert] = useState(false);
     //const sizes = [
     //    [1920, 1080]
     //]
@@ -89,26 +91,40 @@ const Animation = ({title, blocks}) => {
         [6000, 7000],
         [8000, 9000],
     ]
+
+    function updateSize() {
+        const h = window.innerHeight;
+        const w = window.innerWidth;
+        h > w ? setRatio('s') : setRatio('h');
+    }
+
     useEffect(() => {
         videoRef.current.currentTime = 0
         const tl = gsap.timeline({
             scrollTrigger: {
                 start: "top top+=2",
-                end: "+=12000",
+                end: "+=11600",
                 trigger: wrapperRef.current,
                 scrub: true,
                 //pin: true,
                 toggleActions: "play none none reverse",
-                onUpdate: function(self) { 
+                onUpdate: function(self) {
                     if(videoRef.current) {
                       let scrollPos = self.progress;
+                    if (scrollPos > 0.49 && scrollPos < 1) {
+                        setInvert(true);
+                        document.getElementById('header').classList.add('white');
+                    }
+                    else if (scrollPos <=0.49) {
+                        setInvert(false);
+                        document.getElementById('header').classList.remove('white');
+                    }
                       let videoDuration = videoRef.current.duration;
                       let videoCurrentTime = videoDuration * scrollPos;
                       
                       if(videoCurrentTime) {
                         videoRef.current.currentTime = videoCurrentTime;
                       }
-                      //console.log(videoDuration, scrollPos, videoCurrentTime)
                     }
                 },
             } 
@@ -131,9 +147,13 @@ const Animation = ({title, blocks}) => {
         setTl2(tl2);
         const tl3 = gsap.timeline({});
         setTl3(tl3);
-        return () => {};
-    }, [wrapperRef, videoRef]);
+        window.addEventListener('resize', updateSize);
+        updateSize();
+        return () => window.removeEventListener('resize', updateSize);
+        }, [wrapperRef, videoRef]);
 
+    useLayoutEffect(() => {
+    }, []);
 
     return (
         <section className="animation">
@@ -150,7 +170,7 @@ const Animation = ({title, blocks}) => {
                 <video 
                     ref={videoRef} 
                     className="video" 
-                    src="/images/animation/video_1080p.mp4" 
+                    src={`/images/animation/${ratio}.mp4`} 
                     playsInline={true} 
                     webkit-playsinline="true" 
                     preload="auto" 
@@ -159,14 +179,14 @@ const Animation = ({title, blocks}) => {
                     />
             </div>
             {blocks.map((block, i) => (
-                <Block key={i} timeline={tl2} cls="b1" start={`${time_triggers[i][0]} bottom`} end={`${time_triggers[i][1]} top`}>
+                <Block key={i} timeline={tl2} cls={`b1 ${invert ? 'white' : ''}`} start={`${time_triggers[i][0]} bottom`} end={`${time_triggers[i][1]} top`}>
                     <h3>{block.header}</h3>
                     <p>{block.text}</p>
                 </Block>
             ))}
 
             {blocks.map((block, i) => (
-                <Block key={i} timeline={tl2} cls={`c c${i+1}`} start="10000 bottom" end="13000 top">
+                <Block key={i} timeline={tl2} cls={`c c${i+1} ${invert ? 'white' : ''}`} start="10000 bottom" end="13100 top">
                     <img src={block.icon.url} alt={block.icon.alt} width="60"/>
                     <h3>{block.header}</h3>
                     <p>{block.text}</p>
@@ -188,8 +208,13 @@ const ScrollArrow = ({timeline}) => {
                     end: "+=500",
                     scrub: true,
                     trigger: "#cover-trigger",
-                    toggleActions: "play none none reverse",
-                }
+                    onEnter: function() {
+                        document.getElementById('header').classList.remove('white');
+                    },
+                    onLeaveBack: function() {
+                        document.getElementById('header').classList.add('white');
+                    }
+                }   
             }
         );
       }, [timeline]);   
