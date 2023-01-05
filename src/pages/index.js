@@ -68,12 +68,6 @@ const Block = ({children, timeline, cls, start, end}) => {
     )
 }
 
-
-
-
-
-
-
 const Animation = ({title, blocks}) => {
     const [tl, setTl] = useState();
     const [tl2, setTl2] = useState();
@@ -83,14 +77,11 @@ const Animation = ({title, blocks}) => {
     const videoRef = useRef();
     const [ratio, setRatio] = useState('s');
     const [invert, setInvert] = useState(false);
-    //const sizes = [
-    //    [1920, 1080]
-    //]
     const time_triggers = [
-        [2000, 3000],
-        [4000, 5000],
-        [6000, 7000],
-        [8000, 9000],
+        [1500, 1800],
+        [2500, 2800],
+        [3500, 3800],
+        [4500, 4800],
     ]
 
     function updateSize() {
@@ -104,7 +95,7 @@ const Animation = ({title, blocks}) => {
         const tl = gsap.timeline({
             scrollTrigger: {
                 start: "top top+=2",
-                end: "+=11600",
+                end: "+=6000",
                 trigger: wrapperRef.current,
                 scrub: true,
                 //pin: true,
@@ -112,6 +103,7 @@ const Animation = ({title, blocks}) => {
                 onUpdate: function(self) {
                     if(videoRef.current) {
                       let scrollPos = self.progress;
+                      console.log(scrollPos);
                     if (scrollPos > 0.49 && scrollPos < 1) {
                         setInvert(true);
                         document.getElementById('header').classList.add('white');
@@ -188,7 +180,7 @@ const Animation = ({title, blocks}) => {
                 ))}
 
                 {blocks.map((block, i) => (
-                    <Block key={i} timeline={tl2} cls={`c c${i+1} ${invert ? 'white' : ''}`} start="10000 bottom" end="13100 top">
+                    <Block key={i} timeline={tl2} cls={`c c${i+1} ${invert ? 'white' : ''}`} start="6000 bottom" end="7000 top">
                         <img src={block.icon.url} alt={block.icon.alt} width="60"/>
                         <h3>{block.header}</h3>
                         <p>{block.text}</p>
