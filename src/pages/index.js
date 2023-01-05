@@ -157,41 +157,43 @@ const Animation = ({title, blocks}) => {
 
     return (
         <section className="animation">
-            <Preload loading={loading}/>
-            <Title timeline={tl2}>
-                <div className="welcome centered" dangerouslySetInnerHTML={{__html: title.html}} />
-                <p className="centered">
-                    <a href="/nice1" className="discover">discover</a>
-                </p>
-            </Title>
-            <div id="trigger"/>
-            <ScrollArrow timeline={tl3}/>
-            <div id="video-wrapper" className="video-wrapper" ref={wrapperRef}>
-                <video 
-                    ref={videoRef} 
-                    className="video" 
-                    src={`/images/animation/${ratio}.mp4`} 
-                    playsInline={true} 
-                    webkit-playsinline="true" 
-                    preload="auto" 
-                    muted="muted"
-                    onCanPlayThrough={() => setLoading(false)}
-                    />
-            </div>
-            {blocks.map((block, i) => (
-                <Block key={i} timeline={tl2} cls={`b1 ${invert ? 'white' : ''}`} start={`${time_triggers[i][0]} bottom`} end={`${time_triggers[i][1]} top`}>
-                    <h3>{block.header}</h3>
-                    <p>{block.text}</p>
-                </Block>
-            ))}
+            <div>
+                <Preload loading={loading}/>
+                <Title timeline={tl2}>
+                    <div className="welcome centered" dangerouslySetInnerHTML={{__html: title.html}} />
+                    <p className="centered">
+                        <a href="/nice1" className="discover">discover</a>
+                    </p>
+                </Title>
+                <div id="trigger"/>
+                <ScrollArrow timeline={tl3}/>
+                <div id="video-wrapper" className="video-wrapper" ref={wrapperRef}>
+                    <video 
+                        ref={videoRef} 
+                        className="video" 
+                        src={`/images/animation/${ratio}.mp4`} 
+                        playsInline={true} 
+                        webkit-playsinline="true" 
+                        preload="auto" 
+                        muted="muted"
+                        onCanPlayThrough={() => setLoading(false)}
+                        />
+                </div>
+                {blocks.map((block, i) => (
+                    <Block key={i} timeline={tl2} cls={`b1 ${invert ? 'white' : ''}`} start={`${time_triggers[i][0]} bottom`} end={`${time_triggers[i][1]} top`}>
+                        <h3>{block.header}</h3>
+                        <p>{block.text}</p>
+                    </Block>
+                ))}
 
-            {blocks.map((block, i) => (
-                <Block key={i} timeline={tl2} cls={`c c${i+1} ${invert ? 'white' : ''}`} start="10000 bottom" end="13100 top">
-                    <img src={block.icon.url} alt={block.icon.alt} width="60"/>
-                    <h3>{block.header}</h3>
-                    <p>{block.text}</p>
-                </Block>
-            ))}
+                {blocks.map((block, i) => (
+                    <Block key={i} timeline={tl2} cls={`c c${i+1} ${invert ? 'white' : ''}`} start="10000 bottom" end="13100 top">
+                        <img src={block.icon.url} alt={block.icon.alt} width="60"/>
+                        <h3>{block.header}</h3>
+                        <p>{block.text}</p>
+                    </Block>
+                ))}
+            </div>
         </section>
     )
 }
@@ -262,7 +264,7 @@ const AnimateBorder = ({image}) => {
 
 const Preload = ({loading}) => {
     return (
-        <div className={`preload ${loading ? 'visible' : ''}`}>
+        <div className={`preload`}>
             <img src="/images/loading.gif" width="100" height="100" alt="Loading"/>
         </div>
     )
@@ -274,7 +276,7 @@ const Homepage = ({ data, location }) => {
     return (
         <Layout location={location} {...Layout.pickSeoProps(d)}>
                 <Animation title={d.title} blocks={d.blocks}/>
-                <div id="cover-trigger" className="content-wrapper">
+                <div id="cover-trigger" className="content-wrapper container">
                 <section>
                     <div className="container">
                         <div className="products">
