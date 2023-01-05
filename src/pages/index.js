@@ -97,7 +97,7 @@ const Animation = ({title, blocks}) => {
                 start: "top top+=2",
                 end: "+=6000",
                 trigger: wrapperRef.current,
-                scrub: true,
+                scrub: 0.5,
                 //pin: true,
                 toggleActions: "play none none reverse",
                 onUpdate: function(self) {
