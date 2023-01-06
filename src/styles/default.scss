@@ -36,6 +36,13 @@ h4 {font-size: 28px;}
 h5 {font-size: 24px;}
 h6 {font-size: 22px;}
 
+@media screen and (max-width: 1200px) {
+    h2 {
+        font-size: 48px;
+        line-height: 54px;
+    }
+}
+
 @media screen and (max-width: 768px) {
     h2 {
         font-size: 32px;

@@ -4,13 +4,17 @@ import Layout from '../assets/components/layout'
 import Faq from "../assets/components/faq"
 //import HowItWorks from "../assets/components/howitworks"
 import Testimonials from "../assets/components/testimonials"
-import { gsap } from "gsap";
-//import { Tween } from 'react-gsap';
-import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { gsap } from "gsap"
+//import { Tween } from 'react-gsap'
+import { ScrollTrigger } from "gsap/ScrollTrigger"
+import {debounce} from "lodash" 
 import "@styles/animation.scss"
 import "@styles/index.scss"
-gsap.registerPlugin(ScrollTrigger);
-
+gsap.registerPlugin(ScrollTrigger)
+ScrollTrigger.config({ 
+    ignoreMobileResize: true
+});
+//ScrollTrigger.normalizeScroll(true);
 
 
 
@@ -87,9 +91,9 @@ const Animation = ({title, blocks}) => {
     function updateSize() {
         const h = window.innerHeight;
         const w = window.innerWidth;
-        if (w>=1.3*h) {setRatio('h');console.log('Wide',w,h)}
-        else if (w<1.3*h && w>h*0.67) {setRatio('s');console.log('Square',w,h)}
-        else {setRatio('v');console.log('Tall',w,h)}
+        if (w>=1.3*h) setRatio('h')
+        else if (w<1.3*h && w>h*0.67) setRatio('s')
+        else setRatio('v2')
     }
 
     useEffect(() => {
@@ -102,25 +106,29 @@ const Animation = ({title, blocks}) => {
                 scrub: 0.5,
                 //pin: true,
                 toggleActions: "play none none reverse",
-                onUpdate: function(self) {
+                invalidateOnRefresh: true,
+                onUpdate: debounce(function(self) {
+                    const frameCount = 25; 
+                    const step = 1/25;
                     if(videoRef.current) {
-                      let scrollPos = self.progress;
-                    if (scrollPos > 0.49 && scrollPos < 1) {
-                        setInvert(true);
-                        document.getElementById('header').classList.add('white');
+                        let scrollPos = self.progress;
+                        if (scrollPos > 0.49 && scrollPos < 1) {
+                            setInvert(true);
+                            document.getElementById('header').classList.add('white');
+                        }
+                        else if (scrollPos <=0.49) {
+                            setInvert(false);
+                            document.getElementById('header').classList.remove('white');
+                        }
+                        let videoDuration = videoRef.current.duration;
+                        let currentTime = videoRef.current.currentTime;
+                        let newTime = videoDuration * scrollPos;
+                        let target = Math.floor(newTime*frameCount)*step
+                        if(newTime && currentTime !== target) {
+                            videoRef.current.currentTime = target;
+                        }
                     }
-                    else if (scrollPos <=0.49) {
-                        setInvert(false);
-                        document.getElementById('header').classList.remove('white');
-                    }
-                      let videoDuration = videoRef.current.duration;
-                      let videoCurrentTime = videoDuration * scrollPos;
-                      
-                      if(videoCurrentTime) {
-                        videoRef.current.currentTime = videoCurrentTime;
-                      }
-                    }
-                },
+                }, 10),
             } 
         });
         tl.to(
@@ -152,7 +160,7 @@ const Animation = ({title, blocks}) => {
     return (
         <section id="animation" className="animation">
             <div>
-                <Preload loading={loading}/>
+                {/*<Preload loading={loading}/>*/}
                 <Title timeline={tl2} className="welcome centered">
                     <div dangerouslySetInnerHTML={{__html: title.html}} />
                     <p>

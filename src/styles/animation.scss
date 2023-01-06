@@ -19,7 +19,6 @@
         top: 50%;
         left: 50%;
         transform: translate(-50%, -50%);
-
     }
     .video-wrapper {
         z-index: -5;
@@ -162,7 +161,7 @@
     }
 }
 
-@media screen and (max-width: 375px) {
+@media screen and (max-width: 600px) {
     .animation {
         .welcome {
             h1 {
@@ -236,4 +235,3 @@
         }
     }
 }
-

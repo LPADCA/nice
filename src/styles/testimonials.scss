@@ -111,10 +111,24 @@
 
     }
 }
+@media screen and (max-width: 1200px) {
+    .testimonials {
+        padding: 15px 0;
+        .grid {
+            grid-template-columns: auto 400px;
+            .left {
+                overflow: visible;
+                h2 {
+                    font-size: 48px;
+                    line-height: 1.1;
+                }
+            }
+        }
+    }
+}
 
 @media screen and (max-width: 768px) {
     .testimonials {
-        padding: 15px 0;
         .grid {
             display: block;
             .left {
